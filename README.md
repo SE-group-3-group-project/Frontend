@@ -4,15 +4,7 @@
 <h3 align="center">DFXtra!</h3>
 
   <p align="center">
-   A team engineering project. The team are:-    
-    * Kaycee Gu
-    * Alex Hammad
-    * Jac McKeigue
-   * Anish Shah
-   * Chris West
-   * Chung Yan Ho
-   * Qian Zhang
-   * Kaycee
+   A team engineering project. The team are Kaycee Gu, Alex Hammad, Jac McKeigue, Anish Shah, Chris West, Chung Yan Ho, Qian Zhang.
    
   
   
