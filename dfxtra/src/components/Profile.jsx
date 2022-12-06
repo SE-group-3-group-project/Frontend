@@ -1,9 +1,11 @@
+import StorySummary from "./StorySummary";
 
 
 const Profile = ({ key, name, pEmail, dfEmail, github, linkedin, phone, story }) => {
     return (
         <div className="profile-container">
             <h2>Your Profile</h2>
+            <button id="edit-button">Edit</button>
             <div className="profile-headings" id={key}>
                 <p>Name: {name}</p>
                 <p>Personal Email: {pEmail}</p>
@@ -12,8 +14,7 @@ const Profile = ({ key, name, pEmail, dfEmail, github, linkedin, phone, story })
                 <p>Linkedin: {linkedin}</p>
                 <p>phone: {phone}</p>
             </div>
-
-
+            {/* <StorySummary story={story} /> */}
         </div>
     );
 };

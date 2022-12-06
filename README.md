@@ -13,6 +13,7 @@ Home.js
 |
 |-- Header.jsx
 |-- Profile.jsx
+  |-- StorySummary.jsx
 |-- Edit.jsx
 |-- Footer.jsx
 ```
