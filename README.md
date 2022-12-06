@@ -2,23 +2,29 @@
 
 ## Component Hierarchy
 
+```
 App.js
 - Initiliasing routes
 - Passing down props
+```
 
+```
 Home.js
 |
 |-- Header.jsx
 |-- Profile.jsx
 |-- Edit.jsx
 |-- Footer.jsx
+```
 
+```
 Profile.js
 |
 |-- Header.jsx
 |-- Profile.jsx
 |-- PersonalInformation.jsx
 |-- PersonalStory.jsx
+```
 
 ## Style
 - Product manager confirmed that the style should "broadly follow the Digital Futures corporate branding".
