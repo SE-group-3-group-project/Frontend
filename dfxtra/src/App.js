@@ -1,12 +1,14 @@
 import Footer from './components/Footer';
-import Profile from './components/Profile';
 import './App.css';
 import 'tailwindcss/tailwind.css';
+
+import mockData from './Utils/MockData.json';
+import UserHome from './components/UserHome';
 
 function App() {
   return (
     <>
-      <Profile />
+      <UserHome data={mockData} />
       <Footer />
     </>
   );

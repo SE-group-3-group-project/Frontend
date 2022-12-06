@@ -1,18 +1,18 @@
-const Profile = () => {
+
+
+const Profile = ({ key, name, pEmail, dfEmail, github, linkedin, phone, story }) => {
     return (
         <div className="profile-container">
             <h2>Your Profile</h2>
-            <div className="profile-headings">
-                <p>Name:</p>
-                <p>Personal Email:</p>
-                <p>Github:</p>
-                <p>Linkedin:</p>
-                <p>phone:</p>
+            <div className="profile-headings" id={key}>
+                <p>Name: {name}</p>
+                <p>Personal Email: {pEmail}</p>
+                <p>Digital Futures Email {dfEmail}</p>
+                <p>Github: {github}</p>
+                <p>Linkedin: {linkedin}</p>
+                <p>phone: {phone}</p>
             </div>
-            <div className="story">
-                <p>Personal Story Summary:</p>
-                <div className="summary"></div>
-            </div>
+
 
         </div>
     );
