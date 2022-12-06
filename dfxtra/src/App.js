@@ -1,11 +1,16 @@
-import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import 'tailwindcss/tailwind.css';
+import Edit from './pages/Edit';
 
 function App() {
   return (
     <>
-      <Footer />
+      <Router>
+        <Routes>
+          <Route path="/edit" element={<Edit />} />
+        </Routes>
+      </Router>
     </>
   );
 }
