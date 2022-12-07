@@ -3,6 +3,7 @@ import Profile from './Profile';
 const UserHome = ({ data }) => {
     return (
         <>
+
             {data.map(profile => (
                 <Profile
                     key={profile._id}
