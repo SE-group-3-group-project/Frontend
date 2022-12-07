@@ -26,6 +26,16 @@ Profile.js
 |-- PersonalStory.jsx
 ```
 
+```
+Edit.js
+|
+|-- Header.jsx
+|-- EditProgress.jsx
+|-- EditInfo.jsx
+|-- EditStory.jsx
+|-- Footer.jsx
+```
+
 ## Style
 - Product manager confirmed that the style should "broadly follow the Digital Futures corporate branding".
 - CSS carried out using TailwindCSS. 
