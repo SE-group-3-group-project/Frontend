@@ -22,10 +22,30 @@
 } */
 
 .profile-container {
-  width: 80%;
+  width: 95%;
   margin: auto;
   border: .2em solid lightgray;
   padding: 1em;
+
+}
+
+.box {
+  display: flex;
+  gap: 10%;
+}
+
+.left {
+  width: 35%;
+  /* margin-right: 15em; */
+}
+
+.right {
+  width: 55%;
+}
+
+.summary {
+  border: .2em solid black;
+  padding-left: 1em;
 }
 
 .bold-heading {
