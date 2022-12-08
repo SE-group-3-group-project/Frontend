@@ -13,7 +13,7 @@
   }
 }
 
-.App-header {
+/*{.App-header {
   background-color: #cfd6e4;
   /* .App-header {
   background-color: #282c34;
@@ -29,38 +29,38 @@
   color: #61dafb;
 } */
 
-  .profile-container {
-    width: 95%;
-    margin: auto;
-    border: .2em solid lightgray;
-    padding: 1em;
+.profile-container {
+  width: 95%;
+  margin: auto;
+  border: .2em solid lightgray;
+  padding: 1em;
 
-  }
+}
 
-  .box {
-    display: flex;
-    gap: 10%;
-  }
+.box {
+  display: flex;
+  gap: 10%;
+}
 
-  .left {
-    width: 35%;
-    /* margin-right: 15em; */
-  }
+.left {
+  width: 35%;
+  /* margin-right: 15em; */
+}
 
-  .right {
-    width: 55%;
-  }
+.right {
+  width: 55%;
+}
 
-  .summary {
-    border: .2em solid black;
-    padding-left: 1em;
-  }
+.summary {
+  border: .2em solid black;
+  padding-left: 1em;
+}
 
-  .bold-heading {
-    font-weight: bold;
-    font-size: 1.3em;
-  }
+.bold-heading {
+  font-weight: bold;
+  font-size: 1.3em;
+}
 
-  .plain-content {
-    font-weight: normal;
-  }
+.plain-content {
+  font-weight: normal;
+}

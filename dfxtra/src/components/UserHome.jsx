@@ -1,9 +1,11 @@
 import Profile from './Profile';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 const UserHome = ({ data }) => {
     return (
         <>
-
+            <Header />
             {data.map(profile => (
                 <Profile
                     key={profile._id}
@@ -16,6 +18,7 @@ const UserHome = ({ data }) => {
                     story={profile.personalStories}
                 />
             ))}
+            <Footer />
         </>
     );
 };
