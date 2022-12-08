@@ -326,17 +326,21 @@ const EditInfo = () => {
                     </select>
                     <div className="flex items-center justify-center w-full">
                         <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
-                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                {selectedImage && (
-                                    <div>
-                                        <img alt="not fount" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+                            <div className="flex flex-col items-center justify-center pb-6">
+                                {selectedImage ? (
+                                    <div className="flex flex-col items-center">
+                                        <img alt="profile" className="border rounded-lg" width={"250px"} src={URL.createObjectURL(selectedImage)} />
                                         <br />
-                                        <button onClick={() => setSelectedImage(null)}>Remove</button>
+                                        <button className="bg-mid-grey rounded px-2 py-1 text-white" onClick={() => setSelectedImage(null)}>Remove</button>
                                     </div>
-                                )}
-                                <svg aria-hidden="true" className="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                                <p className="mb-2 text-sm text-center text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                                <p className="text-xs text-center text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                ) : (
+                                    <>
+                                        <svg aria-hidden="true" className="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                                        <p className="mb-2 text-sm text-center text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span></p>
+                                        <p className="text-xs text-center text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                    </>
+                                )
+                                }
                             </div>
                             <input id="dropzone-file" type="file" className="hidden" onChange={(event) => {
                                 console.log(event.target.files[0]);
