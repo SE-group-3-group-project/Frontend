@@ -1,7 +1,7 @@
 import logo from './images/logo.svg';
 
 const Header = () => {
-  return (
+ return (
     <div className="text-white bg-black-blue">
     <nav className="navbar navbar-expand-sm">
  <a href="https://www.digitalfutures.com" className="navbar-brand" target="_blank" rel="noreferrer">
@@ -15,7 +15,6 @@ const Header = () => {
 
 </nav>
  </div>
-
   );
 }
 
