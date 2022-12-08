@@ -13,6 +13,7 @@ Home.js
 |
 |-- Header.jsx
 |-- Profile.jsx
+  |-- StorySummary.jsx
 |-- Edit.jsx
 |-- Footer.jsx
 ```
@@ -89,7 +90,7 @@ Edit.js
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
-We started with a team planning session where we set up a GitHub organisation, with shared frontend and backend repositories. In order to manage the project, following Agile and Scrum methodologies, we set up a Trello Board for our product backlog and sprint backlogs. We played Planning Poker to estimate points for our user stories.
+We started with a team planning session where we set up a GitHub organisation, with shared frontend and backend repositories. In order to manage the project, following Agile and Scrum methodologies, we set up a Trello Board for our product backlog and sprint backlogs. We played Planning Poker to estimate points for our user stories. We agreed to a branching and commit strategy: each branch to be given a feature name and all commits to be in past tense.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
