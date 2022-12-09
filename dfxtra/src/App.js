@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import 'tailwindcss/tailwind.css';
-import Footer from './components/Footer';
-import Header from './components/Header';
 import Edit from './pages/Edit';
 import mockData from './Utils/MockData.json';
 import UserHome from './components/UserHome';

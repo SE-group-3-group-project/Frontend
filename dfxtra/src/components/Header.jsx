@@ -8,10 +8,10 @@ const Header = () => {
           <img src={logo} alt="Digital Futures" width="80" />
         </a>
         <div className="text-right">
-          <a href="/" className='pr-4'>
+          <a href="/" className='text-sm sm:text-base pr-4'>
             Need help? Talk to us
           </a>
-          <a href="/">
+          <a href="/" className='text-sm sm:text-base'>
             Menu
           </a>
         </div>
