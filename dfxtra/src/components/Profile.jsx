@@ -1,10 +1,10 @@
 // import StorySummary from "./StorySummary";
 import { Link } from "react-router-dom"
 
-const Profile = ({ key, name, pEmail, dfEmail, github, linkedin, phone, story }) => {
+const Profile = ({ name, pEmail, dfEmail, github, linkedin, phone, story }) => {
     return (
         <div className="bg-light-grey py-6 px-4">
-            <div className="px-12 py-6 my-4 bg-off-white rounded-2xl w-fit mx-auto">
+            <div className="px-12 py-6 my-4 bg-off-white rounded-2xl w-full mx-auto">
                 <div className="flex flex-row items-center gap-6">
                     <h1 className="text-3xl py-2">Your Profile</h1>
                     <Link to="/edit">
@@ -12,44 +12,112 @@ const Profile = ({ key, name, pEmail, dfEmail, github, linkedin, phone, story })
                     </Link>
                 </div>
 
-                <div className="flex flex-col sm:flex-row sm:items-center">
-                    <div className="flex flex-col">
-                        <p className="font-semibold">Name: <span className="font-normal">{name}</span></p>
-                        <p className="font-semibold">Personal Email: <span className="font-normal">{pEmail}</span></p>
-                        <p className="font-semibold">Digital Futures Email: <span className="font-normal"> {dfEmail}</span></p>
-                        <p className="font-semibold">Github:<span className="font-normal"> {github}</span></p>
-                        <p className="font-semibold">Linkedin: <span className="font-normal">{linkedin}</span></p>
-                        <p className="font-semibold">Phone: <span className="font-normal"> {phone}</span></p>
+                <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-2 pt-8 pb-6 px-2 sm:px-6">
+                    <div className="w-full max-w-md">
+                        <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                            <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                Name
+                            </p>
+                            <p className="appearance-none block w-fit sm:w-3/5 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                {name}
+                            </p>
+                        </div>
+                        <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                            <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                Personal Email
+                            </p>
+                            <p className="appearance-none block w-fit sm:w-3/5  bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                {pEmail}
+                            </p>
+                        </div>
+                        <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                            <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                Digital Futures Email
+                            </p>
+                            <p className="appearance-none block w-fit sm:w-3/5 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                {dfEmail}
+                            </p>
+                        </div>
                     </div>
+                    <div className="w-full max-w-md">
+                        <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                            <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                Github Account
+                            </p>
+                            <p className="appearance-none block w-fit sm:w-3/5 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                {github}
+                            </p>
+                        </div>
+                        <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                            <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                LinkedIn Account
+                            </p>
+                            <p className="appearance-none block w-fit sm:w-3/5  bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                {linkedin}
+                            </p>
+                        </div>
+                        <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                            <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                Phone Number
+                            </p>
+                            <p className="appearance-none block w-fit sm:w-3/5 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                {phone}
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-                    <div className="flex flex-col sm:py-2 sm:px-4 sm:ml-20">
-                        <p className="font-semibold pb-2">Personal Story Summary:</p>
-                        <div className="lg:grid lg:grid-cols-4 lg:gap-y-2 lg:gap-x-2 items-center border border-light-blue rounded-lg py-1 px-2 sm:py-2 sm:px-4">
+                <div className="w-full max-w-4xl md:max-w-6xl py-2">
+                    <p className="font-semibold uppercase tracking-wide text-gray-700 text-sm font-bold mb-3">Personal Story Summary:</p>
+                    <div className="border border-light-blue rounded-lg py-1 px-4">
+                        <div className="my-2 sm:py-2 border-b border-dashed border-mid-grey border-opacity-20">
                             <p className="font-medium">Work experiences:</p>
-                            <p>2015-2020</p>
-                            <p>ArchitectCorp LLP</p>
-                            <p className="pb-2 sm:pb-0">Architect</p>
+                            <div className="sm:grid sm:grid-cols-4 sm:gap-y-2 sm:gap-x-4 py-2">
+                                <p>2015-2020</p>
+                                <p>Architect</p>
+                                <p>ArchitectCorp LLP</p>
+                            </div>
+                        </div>
+                        <div className="my-2 sm:py-2 border-b borer-dashed border-mid-grey border-opacity-20">
                             <p className="font-medium">Degree:</p>
-                            <p>2012-2015</p>
-                            <div className="flex flex-col">
+                            <div className="sm:grid sm:grid-cols-4 sm:gap-y-2 sm:gap-x-4 py-2">
+                                <p>2012-2015</p>
                                 <p>School of Life</p>
                                 <p>Philosophy</p>
+                                <p>2:1</p>
                             </div>
-                            <p className="pb-2 sm:pb-0">2:1</p>
+                        </div>
+                        <div className="my-2 sm:py-2 border-b border-dashed border-mid-grey border-opacity-20">
                             <p className="font-medium">School:</p>
-                            <p>2002 - 2012</p>
-                            <p>Friday High School</p>
-                            <p className="pb-2 sm:pb-0">2A*, 2B</p>
+                            <div className="sm:grid sm:grid-cols-4 sm:gap-y-2 sm:gap-x-4 py-2">
+                                <p>2006-2012</p>
+                                <p>Friday High School</p>
+                                <div className="flex flex-col">
+                                    <p>Maths</p>
+                                    <p>Physics</p>
+                                    <p>Art</p>
+                                    <p>Textiles</p>
+                                </div>
+                                <div className="flex flex-col">
+                                    <p>A*</p>
+                                    <p>A</p>
+                                    <p>B</p>
+                                    <p>C</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="my-2 sm:py-2">
                             <p className="font-medium">Personal Achievements:</p>
-                            <p>Juggling</p>
-                            <p>Axe-throwing</p>
-                            <p className="pb-2 sm:pb-0">Stand-up comedy</p>
-                            {/* <StorySummary story={story} /> */}
+                            <div className="sm:grid sm:grid-cols-4 sm:gap-y-2 sm:gap-x-4 py-2">
+                                <p>Juggling</p>
+                                <p>Axe-throwing</p>
+                                <p>Knitting</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
