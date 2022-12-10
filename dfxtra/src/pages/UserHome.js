@@ -1,11 +1,11 @@
-import Profile from './Profile';
+import Profile from '../components/Profile';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+import HomeHeader from '../components/HomeHeader';
 
 const UserHome = ({ data }) => {
     return (
         <>
-            <Header />
+            <HomeHeader />
             {data.map(profile => (
                 <Profile
                     key={profile._id}

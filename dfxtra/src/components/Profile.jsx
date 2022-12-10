@@ -108,10 +108,15 @@ const Profile = ({ name, pEmail, dfEmail, github, linkedin, phone, story }) => {
                         </div>
                         <div className="my-2 sm:py-2">
                             <p className="font-medium">Personal Achievements:</p>
-                            <div className="sm:grid sm:grid-cols-4 sm:gap-y-2 sm:gap-x-4 py-2">
-                                <p>Juggling</p>
-                                <p>Axe-throwing</p>
-                                <p>Knitting</p>
+                            <div className="sm:grid sm:grid-cols-2 sm:gap-y-2 sm:gap-x-4 py-2">
+                                <div className="flex flex-row gap-6">
+                                    <p className="font-medium">Juggling:</p>
+                                    <p>Regional Juggling Champion</p>
+                                </div>
+                                <div className="flex flex-row gap-6">
+                                    <p className="font-medium">Axe-throwing:</p>
+                                    <p>Some description about axe throwing</p>
+                                </div>
                             </div>
                         </div>
                     </div>

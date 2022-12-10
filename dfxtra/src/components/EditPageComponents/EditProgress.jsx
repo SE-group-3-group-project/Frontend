@@ -1,7 +1,7 @@
 const EditProgress = () => {
     return (
         <div className="px-12 py-6 m-4 bg-white flex flex-col sm:flex-row justify-between rounded-2xl">
-            <h1 className="pt-2 pb-4">Your profile</h1>
+            <h1 className="pt-2 pb-4 text-xl text-royal-blue">Your profile</h1>
             <div className="flex flex-col mb-2 items-center justify-between">
                 <div className="relative pt-1">
                     <div className="flex py-2 mb-2 items-center justify-between gap-6">
@@ -17,9 +17,9 @@ const EditProgress = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-row items-center gap-4">
-                <button className="h-fit border rounded-full bg-white px-3 py-1 2xl">Submit Draft</button>
-                <button className="h-fit border rounded-2xl bg-royal-blue text-white px-3 py-1">Reset Draft</button>
+            <div className="flex flex-row items-center justify-center gap-4">
+                <button className="h-fit border rounded-full bg-white px-3 py-1 sm:py-3 sm:px-4 hover:bg-light-blue hover:text-white">Submit Draft</button>
+                <button className="h-fit border rounded-full bg-royal-blue text-white px-3 py-1 sm:py-3 sm:px-4 hover:opacity-70">Reset Draft</button>
             </div>
         </div >
     );
