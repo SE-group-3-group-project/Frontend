@@ -4,7 +4,7 @@ const HomeHeader = () => {
   return (
     <div className="text-white bg-black-blue">
       <nav className="flex flex-row items-center justify-between px-10 py-4">
-        <a href="https://www.digitalfutures.com" className="navbar-brand" target="_blank" rel="noreferrer">
+        <a href="/" className="navbar-brand" target="_blank" rel="noreferrer">
           <img src={logo} alt="Digital Futures" width="80" />
         </a>
         <div className="text-right">
