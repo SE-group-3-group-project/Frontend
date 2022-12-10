@@ -1,4 +1,4 @@
-const EditProgress = () => {
+const EditProgress = ({ progress }) => {
     return (
         <div className="px-12 py-6 m-4 bg-white flex flex-col sm:flex-row justify-between rounded-2xl">
             <h1 className="pt-2 pb-4 text-xl text-royal-blue">Your profile</h1>
@@ -8,12 +8,12 @@ const EditProgress = () => {
                         <p className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-lg text-royal-blue bg-light-grey">Profile completion:</p>
                         <div className="text-right">
                             <span className="text-xs font-semibold inline-block text-royal-blue">
-                                30%
+                                {`${progress}%`}
                             </span>
                         </div>
                     </div>
                     <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-light-grey">
-                        <div style={{ width: "30%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-light-blue"></div>
+                        <div style={{ width: `${progress}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-light-blue"></div>
                     </div>
                 </div>
             </div>

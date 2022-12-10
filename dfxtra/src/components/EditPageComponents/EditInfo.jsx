@@ -1,7 +1,11 @@
 import { useState } from "react";
 
-const EditInfo = () => {
+const EditInfo = ({ progress, setProgress }) => {
     const [selectedImage, setSelectedImage] = useState(null);
+
+    const handleSave = () => {
+        setProgress(progress + 50)
+    }
 
     return (
         <div className="px-12 py-6 m-4 bg-white rounded-2xl">
@@ -353,7 +357,11 @@ const EditInfo = () => {
                         </div>
                     </div>
                 </div>
-                <button className="w-9/12 place-self-center border rounded-2xl bg-royal-blue text-white px-4 py-1 sm:py-3 sm:px-5 hover:opacity-70">
+                <button
+                    className="w-9/12 place-self-center border rounded-2xl bg-royal-blue text-white px-4 py-1 sm:py-3 sm:px-5 hover:opacity-70"
+                    type="button"
+                    onClick={handleSave}
+                >
                     Save
                 </button>
             </form >

@@ -50,6 +50,11 @@ Edit.js
 |-- EditProgress.jsx
 |-- EditInfo.jsx
 |-- EditStory.jsx
+      |-- WorkForm.jsx
+      |-- DegreeForm.jsx
+      |-- SchoolForm.jsx
+      |-- PersonalAchievements.jsx
+      |-- (util) TextInput.jsx
 |-- Footer.jsx
 ```
 
