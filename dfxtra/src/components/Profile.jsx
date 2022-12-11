@@ -1,7 +1,7 @@
 // import StorySummary from "./StorySummary";
 import { Link } from "react-router-dom"
 
-const Profile = ({ name, pEmail, dfEmail, github, linkedin, phone, story }) => {
+const Profile = ({ name, pEmail, dfEmail, github, linkedin, phone }) => {
     return (
         <div className="bg-light-grey py-6 px-4">
             <div className="px-12 py-6 my-4 bg-off-white rounded-2xl w-full mx-auto">
@@ -104,6 +104,15 @@ const Profile = ({ name, pEmail, dfEmail, github, linkedin, phone, story }) => {
                                     <p>B</p>
                                     <p>C</p>
                                 </div>
+                            </div>
+                        </div>
+                        <div className="my-2 sm:py-2 border-b border-dashed border-mid-grey border-opacity-20">
+                            <p className="font-medium">Certifications:</p>
+                            <div className="sm:grid sm:grid-cols-4 sm:gap-y-2 sm:gap-x-4 py-2">
+                                <p className="font-medium">Java SE 8 Programmer I</p>
+                                <p>Oracle</p>
+                                <p>Pass</p>
+                                <p>2029</p>
                             </div>
                         </div>
                         <div className="my-2 sm:py-2">
