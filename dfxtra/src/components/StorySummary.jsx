@@ -1,5 +1,3 @@
-import { all } from "axios";
-
 const StorySummary = ({ key, story }) => {
 
     const date = (startDate, endDate) => {
@@ -47,21 +45,30 @@ const StorySummary = ({ key, story }) => {
         story.schoolQualifications.map(qualification => {
             if (story.schoolQualifications.length > 0) {
                 key = Math.random();
+
                 return (
                     <div className="sm:grid sm:grid-cols-4 sm:gap-y-2 sm:gap-x-4 py-2" key={key}>
                         <p>{date(qualification.startDate, qualification.endDate)}</p>
                         <p>{qualification.school}</p>
                         <div className="flex flex-col">
-                            <p>{qualification.subject}</p>
-                            <p>Maths</p>
-                            <p>Art</p>
-                            <p>Textiles</p>
+                            {qualification.subject.map(sub => {
+                                if (qualification.subject.length > 0) {
+                                    return (
+                                        <p>{sub}</p>
+                                    )
+                                }
+                            })
+                            }
                         </div>
                         <div className="flex flex-col">
-                            <p>{qualification.grade}</p>
-                            <p>A</p>
-                            <p>B</p>
-                            <p>C</p>
+                            {qualification.grade.map(g => {
+                                if (qualification.grade.length > 0) {
+                                    return (
+                                        <p>{g}</p>
+                                    )
+                                }
+                            })
+                            }
                         </div>
                     </div>
                 )
