@@ -1,4 +1,20 @@
-# Frontend
+<div>
+  <h1 align="center">DFXtra!</h3>
+
+  <p align="center">
+   A team engineering project. The team are Kaycee Gu, Alex Hammad, Jac McKeigue, Anish Shah, Chris West, Chung Yan Ho, Qian Zhang.
+
+  </p>
+</div>
+
+
+## To run frontend application
+
+```
+cd dfxtra
+npm start
+```
+
 
 ## Component Hierarchy
 
@@ -27,9 +43,25 @@ Profile.js
 |-- PersonalStory.jsx
 ```
 
+```
+Edit.js
+|
+|-- Header.jsx
+|-- EditProgress.jsx
+|-- EditInfo.jsx
+|-- EditStory.jsx
+      |-- WorkForm.jsx
+      |-- DegreeForm.jsx
+      |-- SchoolForm.jsx
+      |-- PersonalAchievements.jsx
+      |-- (util) TextInput.jsx
+|-- Footer.jsx
+```
+
 ## Style
 - Product manager confirmed that the style should "broadly follow the Digital Futures corporate branding".
 - CSS carried out using TailwindCSS. 
+
 
 <h3 align="center">DFXtra!</h3>
 
@@ -80,13 +112,19 @@ Profile.js
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
-We started with a team planning session where we set up a GitHub organisation, with shared frontend and backend repositories. In order to manage the project, following Agile and Scrum methodologies, we set up a Trello Board for our product backlog and sprint backlogs. We played Planning Poker to estimate points for our user stories. We agreed to a branching and commit strategy: each branch to be given a feature name and all commits to be in past tense.
+We started with a team planning session where we set up a GitHub organisation, with shared frontend and backend repositories. 
+In order to manage the project, following Agile and Scrum methodologies, we set up a Trello Board for our product backlog and sprint backlogs.  
+We played Planning Poker to estimate points for our user stories. 
+Spent some time breaking down the user stories into smaller tasks.
+We agreed to a branching and commit strategy: each branch to be given a feature name and all commits to be in past tense.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 ### Built With
+
+node.js, React, cors, Express, axios, MongoDB, morgan
 
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
@@ -197,6 +235,8 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 * []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 
 
 
