@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import "tailwindcss/tailwind.css";
 import axios from "axios";
 import Edit from "./pages/Edit";
+import Login from './components/login/Login';
 import UserHome from "./pages/UserHome";
 
 function App() {
+  const [user, setLoginUser] = useState({});
 	const [profile, setProfile] = useState([]);
 	const [error, setError] = useState("");
 
