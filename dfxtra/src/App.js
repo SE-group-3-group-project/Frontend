@@ -1,15 +1,40 @@
-import Footer from './components/Footer';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import 'tailwindcss/tailwind.css';
-
-import mockData from './Utils/MockData.json';
-import UserHome from './components/UserHome';
+import axios from 'axios';
+import Edit from './pages/Edit';
+import UserHome from './pages/UserHome';
 
 function App() {
+
+  const [profile, setProfile] = useState([]);
+  const [error, setError] = useState("");
+
+  const getProfile = async () => {
+    try {
+      const response = await axios.get('http://localhost:4000/gradprofile');
+      setProfile(response.data);
+    } catch (error) {
+      setError(error.message);
+    }
+  }
+
+  useEffect(() => {
+    getProfile()
+  }, [])
+
+  if (error) {
+    setError({ error })
+  }
+
   return (
     <>
-      <UserHome data={mockData} />
-      <Footer />
+      <Router>
+        <Routes>
+          <Route path="/" element={<UserHome data={profile} />} />
+          <Route path="/edit" element={<Edit />} />
+        </Routes>
+      </Router>
     </>
   );
 }

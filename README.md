@@ -1,4 +1,20 @@
-# Frontend
+<div>
+  <h1 align="center">DFXtra!</h3>
+
+  <p align="center">
+   A team engineering project. The team are Kaycee Gu, Alex Hammad, Jac McKeigue, Anish Shah, Chris West, Chung Yan Ho, Qian Zhang.
+
+  </p>
+</div>
+
+
+## To run frontend application
+
+```
+cd dfxtra
+npm start
+```
+
 
 ## Component Hierarchy
 
@@ -27,9 +43,25 @@ Profile.js
 |-- PersonalStory.jsx
 ```
 
+```
+Edit.js
+|
+|-- Header.jsx
+|-- EditProgress.jsx
+|-- EditInfo.jsx
+|-- EditStory.jsx
+      |-- WorkForm.jsx
+      |-- DegreeForm.jsx
+      |-- SchoolForm.jsx
+      |-- PersonalAchievements.jsx
+      |-- (util) TextInput.jsx
+|-- Footer.jsx
+```
+
 ## Style
 - Product manager confirmed that the style should "broadly follow the Digital Futures corporate branding".
 - CSS carried out using TailwindCSS. 
+
 
 <h3 align="center">DFXtra!</h3>
 
@@ -203,6 +235,8 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 * []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 
 
 
