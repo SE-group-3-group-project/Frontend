@@ -4,9 +4,11 @@ import 'tailwindcss/tailwind.css';
 import axios from 'axios';
 import Edit from './pages/Edit';
 import UserHome from './pages/UserHome';
+import Login from './components/login/Login';
+import Register from './components/register/Register';
 
 function App() {
-
+  const [user, setLoginUser] = useState({});
   const [profile, setProfile] = useState([]);
   const [error, setError] = useState("");
 
