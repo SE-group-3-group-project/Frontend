@@ -1,4 +1,3 @@
-// import StorySummary from "./StorySummary";
 import { Link } from "react-router-dom"
 import StorySummary from "./StorySummary";
 

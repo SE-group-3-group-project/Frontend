@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TextInput from "../../utils/TextInput"
+import TextInput from "../../utils/Input"
 
 const SchoolForm = () => {
     const [school, setSchool] = useState('');
