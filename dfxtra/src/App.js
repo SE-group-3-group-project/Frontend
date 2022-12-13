@@ -7,25 +7,26 @@ import UserHome from './pages/UserHome';
 import Login from './components/Login.jsx';
 
 function App() {
-  const [user, setLoginUser] = useState({});
+  // const [user, setLoginUser] = useState({});
   const [profile, setProfile] = useState([]);
   const [error, setError] = useState("");
 
   const getProfile = async () => {
     try {
+
       const response = await axios.get('http://localhost:4000/gradprofile/63974c4181a2a1af5d8f2f35');
       setProfile(response.data);
     } catch (error) {
       setError(error.message);
     }
-  }
+  };
 
   useEffect(() => {
-    getProfile()
-  }, [])
+    getProfile();
+  }, []);
 
   if (error) {
-    setError({ error })
+    setError({ error });
   }
 
   return (

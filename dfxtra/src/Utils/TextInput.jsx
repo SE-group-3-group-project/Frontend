@@ -1,4 +1,5 @@
 export default function TextInput({ label, id, placeholder, value, inputHandler }) {
+
     function handleChange(e) {
         inputHandler(e.target.value);
     };
