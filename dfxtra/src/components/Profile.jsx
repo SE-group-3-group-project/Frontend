@@ -1,39 +1,78 @@
+// import StorySummary from "./StorySummary";
+import { Link } from "react-router-dom"
 import StorySummary from "./StorySummary";
 
-
-const Profile = ({ key, name, pEmail, dfEmail, github, linkedin, phone, story }) => {
+const Profile = ({ name, profilePicture, pEmail, dfEmail, github, linkedin, phone, story }) => {
     return (
-        <div className="profile-container">
-            <h2 className="heading">Your Profile</h2>
-            <button id="edit-button">Edit</button>
-
-            <div className="box">
-                <div className="left">
-                    <div className="profile-headings" id={key}>
-                        <p className="bold-heading">Name: <span className="plain-content">{name}</span></p>
-                        <p className="bold-heading">Personal Email: <span className="plain-content">{pEmail}</span></p>
-                        <p className="bold-heading">Digital Futures Email: <span className="plain-content"> {dfEmail}</span></p>
-                        <p className="bold-heading">Github:<span className="plain-content"> {github}</span></p>
-                        <p className="bold-heading">Linkedin: <span className="plain-content">{linkedin}</span></p>
-                        <p className="bold-heading">Phone: <span className="plain-content"> {phone}</span></p>
-                    </div>
+        <div className="bg-light-grey py-6 px-4 sm:px-12">
+            <div className="px-12 py-6 my-y bg-off-white rounded-2xl">
+                <div className="flex flex-row items-center gap-6">
+                    <h1 className="text-3xl py-2 place-content-left">Your Profile</h1>
+                    <Link to="/edit">
+                        <button className="bg-light-grey text-royal-blue border rounded px-3 py-0.5" id="edit-button">Edit</button>
+                    </Link>
                 </div>
+                <div className="w-full flex flex-col items-center">
 
-                <div className="right">
-                    <div className="story">
-                        <p className="bold-heading">Personal Story Summary:</p>
-                        <div className="summary">
-                            <p>Degree</p>
-                            <p>School qualifications</p>
-                            <p>Work experiences</p>
-                            <p>Personal achievements</p>
-                            <p>Etc</p>
+                    <div className="flex flex-col items-center justify-between gap-8 lg:grid lg:grid-cols-2 lg:gap-40 pt-8 pb-6 pr-2 sm:px-6 max-w-6xl">
+                        <div className="flex flex-wrap justify-center">
+                            <img src={profilePicture} alt="grad profile" style={{ "width": "300px", "height": "300px", "borderRadius": "50%" }} className="max-w-md" />
                         </div>
-                        {/* <StorySummary story={story} /> */}
+                        <div className="w-full max-w-md">
+                            <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                                <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                    Name
+                                </p>
+                                <p className="appearance-none block w-fit sm:w-3/5 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                    {name}
+                                </p>
+                            </div>
+                            <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                                <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                    Personal Email
+                                </p>
+                                <p className="appearance-none block w-fit sm:w-3/5  bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                    {pEmail}
+                                </p>
+                            </div>
+                            <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                                <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                    Digital Futures Email
+                                </p>
+                                <p className="appearance-none block w-fit sm:w-3/5 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                    {dfEmail}
+                                </p>
+                            </div>
+                            <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                                <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                    Github Account
+                                </p>
+                                <p className="appearance-none block w-fit sm:w-3/5 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                    {github}
+                                </p>
+                            </div>
+                            <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                                <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                    LinkedIn Account
+                                </p>
+                                <p className="appearance-none block w-fit sm:w-3/5  bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                    {linkedin}
+                                </p>
+                            </div>
+                            <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                                <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                    Phone Number
+                                </p>
+                                <p className="appearance-none block w-fit sm:w-3/5 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                    {phone}
+                                </p>
+                            </div>
+                        </div>
                     </div>
+                    <StorySummary story={story} />
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
