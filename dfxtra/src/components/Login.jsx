@@ -45,7 +45,7 @@ const Login = ({ setLoginUser }) => {
         <>
             {loggedIn && <Navigate to="/" state={{ from: location }} />}
             <h3>Log in to your account</h3>
-            <form onSubmit={login}>
+            <form onSubmit={login} className="bg-light-grey py-6 px-4">
                 <input type="email" id="sign-in-email" name="personal-email" value={user.personalEmail} onChange={handleChange} placeholder="Your email" />
                 <br />
                 <input type="password" id="sign-in-password" name="password" value={user.password} onChange={handleChange} placeholder="Your password" />

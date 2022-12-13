@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
-import "tailwindcss/tailwind.css";
-import axios from "axios";
-import Edit from "./pages/Edit";
-// import Login from './components/login/Login';
-import UserHome from "./pages/UserHome";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import 'tailwindcss/tailwind.css';
+import axios from 'axios';
+// import Edit from './pages/Edit';
+import UserHome from './pages/UserHome';
+import Login from './components/Login.jsx';
 
 function App() {
   // const [user, setLoginUser] = useState({});
@@ -13,9 +13,8 @@ function App() {
 
   const getProfile = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:4000/gradprofile/63974c4181a2a1af5d8f2f35"
-      );
+
+      const response = await axios.get('http://localhost:4000/gradprofile/63974c4181a2a1af5d8f2f35');
       setProfile(response.data);
     } catch (error) {
       setError(error.message);
