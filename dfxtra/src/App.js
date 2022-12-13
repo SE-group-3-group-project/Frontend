@@ -5,7 +5,6 @@ import axios from 'axios';
 // import Edit from './pages/Edit';
 import UserHome from './pages/UserHome';
 import Login from './components/Login.jsx';
-// import Register from './components/register/Register';
 
 function App() {
   const [user, setLoginUser] = useState({});
@@ -14,7 +13,7 @@ function App() {
 
   const getProfile = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/gradprofile');
+      const response = await axios.get('http://localhost:4000/gradprofile/63974c4181a2a1af5d8f2f35');
       setProfile(response.data);
     } catch (error) {
       setError(error.message);
