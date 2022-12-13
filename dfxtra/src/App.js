@@ -34,8 +34,18 @@ function App() {
     <>
       <Router>
         <Routes>
+          <Route
+            exact path="/"
+            element={
+              <>
+                <Login setLoginUser={setLoginUser} />
+              </>
+            } />
+          <Route path="/login" element={<Login setLoginUser={setLoginUser} />} />
+          {/* for adding later */}
+          {/* <Route path="/register" element={<Register />} /> */}
           <Route path="/" element={<UserHome data={profile} />} />
-          <Route path="/edit" element={<Edit />} />
+          {/* <Route path="/edit" element={<Edit />} /> */}
         </Routes>
       </Router>
     </>
