@@ -7,7 +7,7 @@ import UserHome from './pages/UserHome';
 import Login from './components/Login.jsx';
 
 function App() {
-  // const [user, setLoginUser] = useState({});
+  const [user, setLoginUser] = useState({});
   const [profile, setProfile] = useState([]);
   const [error, setError] = useState("");
 
