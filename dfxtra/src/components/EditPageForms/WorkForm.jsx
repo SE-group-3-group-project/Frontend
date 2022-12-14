@@ -40,11 +40,11 @@ function WorkForm({ workExperiences }) {
         },
     ])
 
-    const handleFormChange = (event, index) => {
-        let data = [...formFields];
-        data[index][event.target.name] = event.target.value;
-        setFormFields(data);
-    }
+    // const handleFormChange = (event, index) => {
+    //     let data = [...formFields];
+    //     data[index][event.target.name] = event.target.value;
+    //     setFormFields(data);
+    // }
 
     const submit = async (e) => {
         e.preventDefault();
@@ -107,9 +107,9 @@ function WorkForm({ workExperiences }) {
                                             onChange={updateWorkFields}
                                         >
                                             <option>Select type of employment</option>
-                                            <option value="full-time">Full-Time</option>
-                                            <option value="part-time">Part-Time</option>
-                                            <option value="self-employed">Self-Employed</option>
+                                            <option value="Full-Time">Full-Time</option>
+                                            <option value="Part-Time">Part-Time</option>
+                                            <option value="Self-Employed">Self-Employed</option>
                                         </select>
                                     </div>
                                     <div className="w-full px-3 pb-4">
@@ -118,7 +118,7 @@ function WorkForm({ workExperiences }) {
                                             id="employer"
                                             type="text"
                                             placeholder="Architect LLP"
-                                            value={workProfile.workEmployer}
+                                            value={workProfile.workEmployer || ""}
                                             onChange={updateWorkFields}
                                             // onChange={event => handleFormChange(event, index)}
                                             required />
@@ -129,7 +129,7 @@ function WorkForm({ workExperiences }) {
                                             id="position"
                                             type="text"
                                             placeholder="Architect"
-                                            value={workProfile.workPosition}
+                                            value={workProfile.workPosition || ""}
                                             onChange={updateWorkFields}
                                             // onChange={event => handleFormChange(event, index)}
                                             required />
@@ -140,7 +140,7 @@ function WorkForm({ workExperiences }) {
                                             id="degree-from"
                                             type="date"
                                             placeholder="start date"
-                                            value={workProfile.workStart}
+                                            value={workProfile.workStart || ""}
                                             onChange={updateWorkFields}
                                             // onChange={event => handleFormChange(event, index)}
                                             required
@@ -152,7 +152,7 @@ function WorkForm({ workExperiences }) {
                                             id="degree-to"
                                             type="date"
                                             placeholder="end date"
-                                            value={workProfile.workEnd}
+                                            value={workProfile.workEnd || ""}
                                             onChange={updateWorkFields}
                                             // onChange={event => handleFormChange(event, index)}
                                             required

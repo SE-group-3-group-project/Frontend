@@ -117,8 +117,8 @@ const StorySummary = ({ key, story }) => {
                         <div className="flex flex-row gap-6" key={key}>
                             <p className="font-medium">{project.title}:</p>
                             <p>{project.url}</p>
-                            <p>{project.year}</p>
                             <p>{project.description}</p>
+                            <p>{project.year}</p>
                         </div>
                     </>
                 )
