@@ -1,8 +1,5 @@
-export default function Input({ label, id, type, placeholder, value, inputHandler }) {
+export default function Input({ label, id, type, placeholder, value, inputHandler, onChange }) {
 
-    function handleChange(e) {
-        inputHandler(e.target.value);
-    };
 
     return (
         <label>
@@ -13,7 +10,7 @@ export default function Input({ label, id, type, placeholder, value, inputHandle
                 type={type}
                 placeholder={placeholder}
                 value={value}
-                onChange={handleChange}
+                onChange={onChange}
                 required />
         </label>
     )

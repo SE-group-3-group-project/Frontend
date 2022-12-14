@@ -1,130 +1,130 @@
 import { useState } from "react";
 import TextInput from "../../Utils/Input.jsx"
 
-const DegreeForm = ({ degrees }) => {
-    let university;
-    let subject;
-    let degreeLevel;
-    let grade;
-    let startDate;
-    let endDate;
+const DegreeForm = ({ inputDegrees, setDegree }) => {
+    let universityName;
+    let universitySubject;
+    let universityDegreeLevel;
+    let universityGrade;
+    let universityStart;
+    let universityEnd;
 
-    for (let i = 0; i < degrees.length; i++) {
-        university = degrees[i].university;
-        subject = degrees[i].degreeSubject;
-        degreeLevel = degrees[i].degreeLevel;
-        grade = degrees[i].grade;
-        startDate = new Date(degrees[i].startDate).toISOString().split('T')[0];
-        endDate = new Date(degrees[i].endDate).toISOString().split('T')[0];
+    for (let i = 0; i < inputDegrees.length; i++) {
+        universityName = inputDegrees[i].university;
+        universitySubject = inputDegrees[i].degreeSubject;
+        universityDegreeLevel = inputDegrees[i].degreeLevel;
+        universityGrade = inputDegrees[i].grade;
+        universityStart = new Date(inputDegrees[i].startDate).toISOString().split('T')[0];
+        universityEnd = new Date(inputDegrees[i].endDate).toISOString().split('T')[0];
     }
 
-    const [degreesProfile, setDegreesProfile] = useState({
-        universityName: university,
-        universitySubject: subject,
-        universityDegreeLevel: degreeLevel,
-        universityGrade: grade,
-        universityStart: startDate,
-        universityEnd: endDate,
-    })
+    const [degreesProfiles, setDegreesProfile] = useState([{
+        university: universityName,
+        degreeSubject: universitySubject,
+        degreeLevel: universityDegreeLevel,
+        grade: universityGrade,
+        startDate: universityStart,
+        endDate: universityEnd,
+    }])
 
-    const updateDegreesFields = (e) => {
-        const { id, value } = e.target
-        setDegreesProfile({ ...degreesProfile, [id]: value })
+    const updateDegreesFields = (index, event) => {
+        const values = [...degreesProfiles];
+        values[index][event.target.id] = event.target.value;
+        setDegreesProfile(values)
     }
-
-    const [formFields, setFormFields] = useState([
-        {
-            university: "",
-            subject: "",
-            degreeLevel: "",
-            grade: "",
-            startDate: "",
-            endDate: ""
-        },
-    ])
 
     const addFields = () => {
-        let object = {
+        const values = [...degreesProfiles];
+        values.push({ 
             university: "",
-            subject: "",
-            degreeLevel: "",
-            grade: "",
-            startDate: "",
-            endDate: ""
-        }
-
-        setFormFields([...formFields, object])
+        degreeSubject: "",
+        degreeLevel: "",
+        grade: "",
+        startDate: "",
+        endDate: "",
+         });
+        setDegreesProfile(values)
     }
 
     const removeFields = (index) => {
-        let data = [...formFields];
+        let data = [...degreesProfiles];
         data.splice(index, 1)
-        setFormFields(data)
+        setDegreesProfile(data)
     }
 
-    // function handleSave() {
-    //     const container = document.querySelector("#degree-form");
-    //     const allInput = container.querySelectorAll("input");
-    //     for (let i = 0; i < allInput.length; i++) {
-    //         allInput[i].readOnly = true;
-    //         allInput[i].style.background = "#667589"
-    //         allInput[i].style.color = "#EAEAEA"
-    //     }
-    // }
+    const handleSave = () => {
+        setDegree(degreesProfiles)
+    }
 
     return (
-        <div className="flex flex-col px-2 w-full">
+        <div className="flex flex-col px-2 pb-1 w-full border-b">
             <div className="flex flex-row items-center justify-between">
                 <h2 className="pt-2 pb-4">Degrees:</h2>
-                <button
-                    className="w-fit h-fit bg-light-grey text-royal-blue font-medium border rounded-md px-4 py-2"
-                    onClick={addFields}
-                >
-                    Add
-                </button>
+                <div className="flex flex-row gap-3">
+                    <button
+                        className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2"
+                        onClick={handleSave}
+                    >
+                        Save
+                    </button>
+                    <button
+                        className="bg-light-grey text-royal-blue font-medium rounded-md py-1 px-4"
+                        type="button"
+                        onClick={() => addFields()}
+                    >
+                        Add
+                    </button>
+                </div>
             </div>
             <div className="flex flex-col" id="degree-form">
                 <form className="flex flex-col items-center">
-                    {formFields.map((form, index) => {
+                    {degreesProfiles.map((degreesProfile, index) => {
                         return (
                             <div className="w-full flex flex-col items-center lg:flex lg:flex-row" key={index}>
+                                <button
+                                    className="bg-red-100 text-red-500 text-xl text-center rounded-md py-1 px-3 mt-1.5"
+                                    type="button"
+                                    onClick={() => removeFields(index)}
+                                >
+                                    X
+                                </button>
                                 <div className="w-full px-3 pb-4">
                                     <TextInput
                                         label="university"
-                                        id="universityName"
+                                        id="university"
                                         placeholder="University of Arts London"
-                                        value={degreesProfile.universityName}
-                                        onChange={updateDegreesFields}
+                                        value={degreesProfile.university}
+                                        onChange={event => updateDegreesFields(index,event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
                                     <TextInput
                                         label="subject"
-                                        id="niversitySubject"
+                                        id="degreeSubject"
                                         type="text"
                                         placeholder="Photography"
-                                        value={degreesProfile.universitySubject}
-                                        onChange={updateDegreesFields}
+                                        value={degreesProfile.degreeSubject}
+                                        onChange={event => updateDegreesFields(index,event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
                                     <TextInput
                                         label="degree level"
-                                        id="universityDegreeLevel"
+                                        id="degreeLevel"
                                         type="text"
                                         placeholder="Masters"
-                                        value={degreesProfile.universityDegreeLevel}
-                                        onChange={updateDegreesFields}
+                                        value={degreesProfile.degreeLevel}
+                                        onChange={event => updateDegreesFields(index,event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
                                     <TextInput
                                         label="grade"
-                                        id="universityGrade"
+                                        id="grade"
                                         type="text"
                                         placeholder="2:1"
-                                        value={degreesProfile.universityGrade}
-                                        onChange={updateDegreesFields}
+                                        value={degreesProfile.grade}
+                                        onChange={event => updateDegreesFields(index,event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -134,10 +134,10 @@ const DegreeForm = ({ degrees }) => {
                                     <input
                                         className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                                         name="degree-from"
-                                        id="universityStart"
+                                        id="startDate"
                                         type="date"
-                                        value={degreesProfile.universityStart}
-                                        onChange={updateDegreesFields}
+                                        value={degreesProfile.startDate}
+                                        onChange={event => updateDegreesFields(index,event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -147,20 +147,13 @@ const DegreeForm = ({ degrees }) => {
                                     <input
                                         className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                                         name="degree-to"
-                                        id="universityEnd"
+                                        id="endDate"
                                         type="date"
-                                        value={degreesProfile.universityEnd}
-                                        onChange={updateDegreesFields}
+                                        value={degreesProfile.endDate}
+                                        onChange={event => updateDegreesFields(index,event)}
                                         required />
                                 </div>
                                 <div className="flex flex-col">
-                                    <button
-                                        className="bg-red-100 text-red-500 py-1 px-2.5 rounded-md"
-                                        type="button"
-                                        onClick={() => removeFields(index)}
-                                    >
-                                        Remove
-                                    </button>
                                 </div>
                             </div>
                         )

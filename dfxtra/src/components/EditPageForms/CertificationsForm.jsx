@@ -2,124 +2,127 @@ import { useState } from "react";
 // import Input from "../../Utils/Input"
 import Input from "../../Utils/Input.jsx"
 
-const Certifications = ({ certifications }) => {
+const Certifications = ({ inputCertifications, setCertification }) => {
 
-    let type;
-    let issuer;
-    let grade;
-    let year;
+    let certificationsType;
+    let certificationsIssuer;
+    let certificationsGrade;
+    let certificationsYear;
 
-    for (let i = 0; i < certifications.length; i++) {
-        type = certifications[i].type;
-        issuer = certifications[i].issuer;
-        grade = certifications[i].grade;
-        year = certifications[i].year;
+    for (let i = 0; i < inputCertifications.length; i++) {
+        certificationsType = inputCertifications[i].type;
+        certificationsIssuer = inputCertifications[i].issuer;
+        certificationsGrade = inputCertifications[i].grade;
+        certificationsYear = inputCertifications[i].year;
     }
 
-    const [certificationsProfile, setCertificationsProfile] = useState({
-        certificationsType: type,
-        certificationsIssuer: issuer,
-        certificationsGrade: grade,
-        certificationsYear: year,
-    })
+    const [certificationsProfiles, setCertificationsProfile] = useState([{
+        type: certificationsType,
+        issuer: certificationsIssuer,
+        grade: certificationsGrade,
+        year: certificationsYear,
+    }])
 
-    const updateCertificationsFields = (e) => {
-        const { id, value } = e.target
-        setCertificationsProfile({ ...certificationsProfile, [id]: value })
+    const updateCertificationsFields = (index, event) => {
+        const values = [...certificationsProfiles];
+        values[index][event.target.id] = event.target.value;
+        setCertificationsProfile(values)
     }
-
-    const [formFields, setFormFields] = useState([
-        {
-            type: "",
-            issuer: "",
-            grade: "",
-            year: "",
-        },
-    ])
 
     const addFields = () => {
-        let object = {
+        const values = [...certificationsProfiles];
+        values.push({ 
             type: "",
             issuer: "",
             grade: "",
             year: "",
-        }
-
-        setFormFields([...formFields, object])
+         });
+        setCertificationsProfile(values)
     }
 
     const removeFields = (index) => {
-        let data = [...formFields];
+        let data = [...certificationsProfiles];
         data.splice(index, 1)
-        setFormFields(data)
+        setCertificationsProfile(data)
+    }
+
+    const handleSave = () => {
+        setCertification(certificationsProfiles)
     }
 
     return (
-        <div className="flex flex-col px-2 w-full">
+        <div className="flex flex-col px-2 pb-1 w-full border-b">
             <div className="flex flex-row items-center justify-between">
                 <h2 className="pt-2 pb-4">Certifications:</h2>
-                <button
-                    className="w-fit h-fit bg-light-grey text-royal-blue font-medium border rounded-md px-4 py-2"
-                    onClick={addFields}
-                >
-                    Add
-                </button>
+                <div className="flex flex-row gap-2">
+                    <button
+                        className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2"
+                        onClick={handleSave}
+                    >
+                        Save
+                    </button>
+                    <button
+                        className="bg-light-grey text-royal-blue font-medium rounded-md py-1 px-4"
+                        type="button"
+                        onClick={() => addFields()}
+                    >
+                        Add
+                    </button>
+                </div>
             </div>
             <div className="flex flex-col" id="certifications-form">
                 <form className="flex flex-col items-center">
-                    {formFields.map((form, index) => {
+                    {certificationsProfiles.map((certificationsProfile, index) => {
                         return (
                             <div className="w-full flex flex-col items-center lg:flex lg:flex-row" key={index}>
+                                <button
+                                    className="bg-red-100 text-red-500 text-xl text-center rounded-md py-1 px-3 mt-1.5"
+                                    type="button"
+                                    onClick={() => removeFields(index)}
+                                >
+                                    X
+                                </button>
                                 <div className="w-full px-3 pb-4">
                                     <Input
                                         label="type"
-                                        id="certificationsType"
+                                        id="type"
                                         type="text"
                                         placeholder="IBM Explorer Badge"
-                                        value={certificationsProfile.certificationsType}
-                                        onChange={updateCertificationsFields}
+                                        value={certificationsProfile.type}
+                                        onChange={event => updateCertificationsFields(index,event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
                                     <Input
                                         label="issuer"
-                                        id="certificationsIssuer"
+                                        id="issuer"
                                         type="text"
                                         placeholder="IBM"
-                                        value={certificationsProfile.certificationsIssuer}
-                                        onChange={updateCertificationsFields}
+                                        value={certificationsProfile.issuer}
+                                        onChange={event => updateCertificationsFields(index,event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
                                     <Input
                                         label="grade"
-                                        id="certificationsGrade"
+                                        id="grade"
                                         type="text"
                                         placeholder="Pass"
-                                        value={certificationsProfile.certificationsGrade}
-                                        onChange={updateCertificationsFields}
+                                        value={certificationsProfile.grade}
+                                        onChange={event => updateCertificationsFields(index,event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
                                     <Input
                                         label="year"
-                                        id="certificationsYear"
+                                        id="year"
                                         type="number"
                                         min="1800"
                                         max="2022"
                                         placeholder="2020"
-                                        value={certificationsProfile.certificationsYear}
-                                        onChange={updateCertificationsFields}
+                                        value={certificationsProfile.year}
+                                        onChange={event => updateCertificationsFields(index,event)}
                                         required />
-                                </div>
-                                <div className="flex flex-col">
-                                    <button
-                                        className="bg-red-100 text-red-500 py-1 px-2.5 rounded-md"
-                                        type="button"
-                                        onClick={() => removeFields(index)}
-                                    >
-                                        Remove
-                                    </button>
                                 </div>
                             </div>
                         )
