@@ -1,4 +1,5 @@
-const StorySummary = ({ key, story }) => {
+const StorySummary = ({ story }) => {
+    let key;
 
     const date = (startDate, endDate) => {
         const d = new Date(startDate);
