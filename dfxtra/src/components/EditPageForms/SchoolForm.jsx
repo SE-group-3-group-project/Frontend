@@ -1,8 +1,36 @@
 import { useState } from "react";
 import TextInput from "../../utils/Input"
 
-const SchoolForm = () => {
-    const [school, setSchool] = useState('');
+const SchoolForm = ({ schoolQualifications }) => {
+    let school;
+    let examType;
+    let subject;
+    let grade;
+    let startDate;
+    let endDate;
+
+    for (let i = 0; i < schoolQualifications.length; i++) {
+        school = schoolQualifications[i].school;
+        examType = schoolQualifications[i].examType;
+        subject = schoolQualifications[i].subject;
+        grade = schoolQualifications[i].grade;
+        startDate = new Date(schoolQualifications[i].startDate).toISOString().split('T')[0];
+        endDate = new Date(schoolQualifications[i].endDate).toISOString().split('T')[0];
+    }
+
+    const [schoolProfile, setSchoolProfile] = useState({
+        schoolName: school,
+        schoolExamType: examType,
+        schoolSubject: subject,
+        schoolGrade: grade,
+        schoolStart: startDate,
+        schoolEnd: endDate,
+    })
+
+    const updateSchoolFields = (e) => {
+        const { id, value } = e.target
+        setSchoolProfile({ ...schoolProfile, [id]: value })
+    }
 
     return (
         <div className="flex flex-col px-2 w-full">
@@ -12,10 +40,10 @@ const SchoolForm = () => {
                     <div className="w-full px-3 pb-4">
                         <TextInput
                             label="school"
-                            id="school"
+                            id="schoolName"
                             placeholder="Walthamstow Upper School"
-                            value={school}
-                            inputHandler={setSchool}
+                            value={schoolProfile.schoolName}
+                            onChange={updateSchoolFields}
                             required />
                     </div>
                     <div className="w-full px-3 pb-4">
@@ -24,22 +52,28 @@ const SchoolForm = () => {
                             id="subject"
                             type="text"
                             placeholder="Maths"
+                            value={schoolProfile.schoolSubject}
+                            onChange={updateSchoolFields}
                             required />
                     </div>
                     <div className="w-full px-3 pb-4">
                         <TextInput
                             label="qualification-level"
-                            id="qualification-level"
+                            id="schoolExamType"
                             type="text"
                             placeholder="A Level"
+                            value={schoolProfile.schoolExamType}
+                            onChange={updateSchoolFields}
                             required />
                     </div>
                     <div className="w-full px-3 pb-4">
                         <TextInput
                             label="grade"
-                            id="grade"
+                            id="schoolGrade"
                             type="text"
                             placeholder="A"
+                            value={schoolProfile.schoolGrade}
+                            onChange={updateSchoolFields}
                             required />
                     </div>
                     <div className="w-full px-3 pb-4">
@@ -49,8 +83,10 @@ const SchoolForm = () => {
                         <input
                             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                             name="degree-from"
-                            id="degree-from"
+                            id="schoolStart"
                             type="date"
+                            value={schoolProfile.schoolStart}
+                            onChange={updateSchoolFields}
                             required />
                     </div>
                     <div className="w-full px-3 pb-4">
@@ -60,8 +96,10 @@ const SchoolForm = () => {
                         <input
                             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                             name="degree-to"
-                            id="degree-to"
+                            id="schoolEnd"
                             type="date"
+                            value={schoolProfile.schoolEnd}
+                            onChange={updateSchoolFields}
                             required />
                     </div>
                 </form>

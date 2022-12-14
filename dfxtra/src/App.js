@@ -45,7 +45,7 @@ function App() {
           {/* for adding later */}
           {/* <Route path="/register" element={<Register />} /> */}
           <Route path="/" element={<UserHome data={profile} />} />
-          <Route path="/edit" element={<Edit />} />
+          <Route path="/edit" element={<Edit profile={profile} />} />
         </Routes>
       </Router>
     </>

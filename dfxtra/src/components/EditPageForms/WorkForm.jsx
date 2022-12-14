@@ -2,7 +2,34 @@ import { useState } from "react";
 import axios from "axios";
 import Input from "../../utils/Input"
 
-function WorkForm() {
+function WorkForm({ workExperiences }) {
+    let type;
+    let employer;
+    let position;
+    let startDate;
+    let endDate;
+
+    for (let i = 0; i < workExperiences.length; i++) {
+        type = workExperiences[i].type;
+        employer = workExperiences[i].employer;
+        position = workExperiences[i].position;
+        startDate = new Date(workExperiences[i].startDate).toISOString().split('T')[0];
+        endDate = new Date(workExperiences[i].endDate).toISOString().split('T')[0];
+    }
+
+    const [workProfile, setWorkProfile] = useState({
+        workType: type,
+        workEmployer: employer,
+        workPosition: position,
+        workStart: startDate,
+        workEnd: endDate,
+    })
+
+    const updateWorkFields = (e) => {
+        const { id, value } = e.target
+        setWorkProfile({ ...workProfile, [id]: value })
+    }
+
     const [formFields, setFormFields] = useState([
         {
             type: "",
@@ -12,15 +39,6 @@ function WorkForm() {
             endDate: ""
         },
     ])
-    const [type, setType] = useState('')
-    const [employer, setEmployer] = useState('');
-    const [position, setPosition] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-
-    function handleSelect(e) {
-        setType(e.target.value);
-    };
 
     const handleFormChange = (event, index) => {
         let data = [...formFields];
@@ -31,13 +49,14 @@ function WorkForm() {
     const submit = async (e) => {
         e.preventDefault();
 
-        const workData = { type, employer, position, startDate, endDate }
+        const id = "63974c4181a2a1af5d8f2f35"
+        const workData = { id, type, employer, position, startDate, endDate }
 
-        if (formFields) {
-            await axios.post(process.env.REACT_APP_WORK, workData);
-        }
+        // if (workData) {
+        //     await axios.put(process.env.REACT_APP_WORK, workData);
+        // }
 
-        console.log(formFields)
+        console.log(workData)
     }
 
     const addFields = () => {
@@ -74,22 +93,23 @@ function WorkForm() {
                     <form className="flex flex-col items-center" onSubmit={submit}>
                         {formFields.map((form, index) => {
                             return (
-                                <div className="flex flex-col items-center lg:flex lg:flex-row" key={index}>
+                                <div className="w-full flex flex-col items-center lg:flex lg:flex-row" key={index}>
                                     <div className="flex flex-col w-full px-3 pb-4">
                                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="work-type">
                                             Type
                                         </label>
                                         <select
-                                            id="work-type"
-                                            name="work-type"
+                                            id="workType"
+                                            name="workType"
                                             className="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-                                            value={type}
-                                            onChange={handleSelect}
+                                            multiple={false}
+                                            value={workProfile.workType || ""}
+                                            onChange={updateWorkFields}
                                         >
                                             <option>Select type of employment</option>
-                                            <option value="full-time">Full-time</option>
-                                            <option value="part-time">Part-time</option>
-                                            <option value="self-employed">Self-employed</option>
+                                            <option value="full-time">Full-Time</option>
+                                            <option value="part-time">Part-Time</option>
+                                            <option value="self-employed">Self-Employed</option>
                                         </select>
                                     </div>
                                     <div className="w-full px-3 pb-4">
@@ -98,9 +118,9 @@ function WorkForm() {
                                             id="employer"
                                             type="text"
                                             placeholder="Architect LLP"
-                                            value={employer}
-                                            inputHandler={setEmployer}
-                                            onChange={event => handleFormChange(event, index)}
+                                            value={workProfile.workEmployer}
+                                            onChange={updateWorkFields}
+                                            // onChange={event => handleFormChange(event, index)}
                                             required />
                                     </div>
                                     <div className="w-full px-3 pb-4">
@@ -109,9 +129,9 @@ function WorkForm() {
                                             id="position"
                                             type="text"
                                             placeholder="Architect"
-                                            value={position}
-                                            inputHandler={setPosition}
-                                            onChange={event => handleFormChange(event, index)}
+                                            value={workProfile.workPosition}
+                                            onChange={updateWorkFields}
+                                            // onChange={event => handleFormChange(event, index)}
                                             required />
                                     </div>
                                     <div className="w-full px-3 pb-4">
@@ -120,9 +140,9 @@ function WorkForm() {
                                             id="degree-from"
                                             type="date"
                                             placeholder="start date"
-                                            value={startDate}
-                                            inputHandler={setStartDate}
-                                            onChange={event => handleFormChange(event, index)}
+                                            value={workProfile.workStart}
+                                            onChange={updateWorkFields}
+                                            // onChange={event => handleFormChange(event, index)}
                                             required
                                         />
                                     </div>
@@ -132,15 +152,22 @@ function WorkForm() {
                                             id="degree-to"
                                             type="date"
                                             placeholder="end date"
-                                            value={endDate}
-                                            inputHandler={setEndDate}
-                                            onChange={event => handleFormChange(event, index)}
+                                            value={workProfile.workEnd}
+                                            onChange={updateWorkFields}
+                                            // onChange={event => handleFormChange(event, index)}
                                             required
                                         />
                                     </div>
 
-                                    <button className="bg-red-100 text-red-500 py-1 px-2.5 rounded-md" onClick={() => removeFields(index)}>Remove</button>
-
+                                    <div className="flex flex-col">
+                                        <button
+                                            className="bg-red-100 text-red-500 py-1 px-2.5 rounded-md"
+                                            type="button"
+                                            onClick={() => removeFields(index)}
+                                        >
+                                            Remove
+                                        </button>
+                                    </div>
                                 </div>
                             )
                         })}

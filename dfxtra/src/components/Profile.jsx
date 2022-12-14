@@ -15,7 +15,10 @@ const Profile = ({ name, profilePicture, pEmail, dfEmail, github, linkedin, phon
 
                     <div className="flex flex-col items-center justify-between gap-8 lg:grid lg:grid-cols-2 lg:gap-40 pt-8 pb-6 pr-2 sm:px-6 max-w-6xl">
                         <div className="flex flex-wrap justify-center">
-                            <img src={profilePicture} alt="grad profile" style={{ "width": "300px", "height": "300px", "borderRadius": "50%" }} className="max-w-md" />
+                            <img
+                                src={profilePicture}
+                                alt="grad profile" style={{ "width": "300px", "height": "300px", "borderRadius": "50%" }}
+                                className="max-w-md" />
                         </div>
                         <div className="w-full max-w-md">
                             <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">

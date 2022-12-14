@@ -1,9 +1,28 @@
 import { useState } from "react";
 import TextInput from "../../utils/Input"
 
-const PersonalAchievementsForm = () => {
-    const [personalAchievements, setPersonalAchievements] = useState('');
-    const [description, setDescription] = useState('');
+const PersonalAchievementsForm = ({ personalAchievements }) => {
+
+    let achievement;
+    let description;
+    let year;
+
+    for (let i = 0; i < personalAchievements.length; i++) {
+        achievement = personalAchievements[i].achievement;
+        description = personalAchievements[i].description;
+        year = personalAchievements[i].year;
+    }
+
+    const [achievementsProfile, setAchievementsProfile] = useState({
+        achievementTitle: achievement,
+        achievementDescription: description,
+        achievementYear: year,
+    })
+
+    const updateAchievementsFields = (e) => {
+        const { id, value } = e.target
+        setAchievementsProfile({ ...achievementsProfile, [id]: value })
+    }
 
     return (
         <div className="flex flex-col px-2 w-full">
@@ -15,20 +34,32 @@ const PersonalAchievementsForm = () => {
                     <div className="w-full px-3 pb-4">
                         <TextInput
                             label="personal achievements"
-                            id="personal-achievements"
+                            id="achivementsTitle"
                             placeholder="Regional Juggling Champion"
-                            value={personalAchievements}
-                            inputHandler={setPersonalAchievements}
+                            value={achievementsProfile.achievementTitle}
+                            onChange={updateAchievementsFields}
                             required />
                     </div>
                     <div className="w-full px-3 pb-4">
                         <TextInput
                             label="description"
-                            id="description"
+                            id="achievementDescription"
                             type="text"
                             placeholder="First place out of 30 contestants"
-                            value={description}
-                            inputHandler={setDescription}
+                            value={achievementsProfile.achievementDescription}
+                            onChange={updateAchievementsFields}
+                            required />
+                    </div>
+                    <div className="w-full px-3 pb-4">
+                        <TextInput
+                            label="year"
+                            id="achievementYear"
+                            type="number"
+                            min="1800"
+                            max="2022"
+                            placeholder="year completed"
+                            value={achievementsProfile.achievementYear}
+                            onChange={updateAchievementsFields}
                             required />
                     </div>
                 </form>
