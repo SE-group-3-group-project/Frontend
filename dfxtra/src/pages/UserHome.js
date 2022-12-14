@@ -18,7 +18,7 @@ const UserHome = ({ data }) => {
         const stories = data.personalStories;
         return (
             <>
-                <HomeHeader />
+               <HomeHeader profilePicture={profilePicture}/>
                 <Profile
                     key={key}
                     name={first + " " + last + " (" + pronouns + ")"}

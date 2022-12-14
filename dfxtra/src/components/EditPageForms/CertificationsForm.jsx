@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Input from "../../utils/Input"
+// import Input from "../../Utils/Input"
+import Input from "../../Utils/Input.jsx"
 
 const Certifications = ({ inputCertifications, setCertification }) => {
 
