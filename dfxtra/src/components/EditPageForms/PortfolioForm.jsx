@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Input from "../../utils/Input"
+import Input from "../../Utils/Input.jsx"
 
 const Portfolio = ({ portfolio }) => {
     let title;

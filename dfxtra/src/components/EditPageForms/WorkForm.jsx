@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import Input from "../../utils/Input"
+import Input from "../../Utils/Input.jsx"
 
 function WorkForm({ workExperiences }) {
     let type;
