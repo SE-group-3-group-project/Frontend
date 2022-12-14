@@ -1,4 +1,4 @@
-export default function TextInput({ label, id, placeholder, value, inputHandler }) {
+export default function Input({ label, id, type, placeholder, value, inputHandler }) {
 
     function handleChange(e) {
         inputHandler(e.target.value);
@@ -10,7 +10,7 @@ export default function TextInput({ label, id, placeholder, value, inputHandler 
             <input
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                 id={id}
-                type="text"
+                type={type}
                 placeholder={placeholder}
                 value={value}
                 onChange={handleChange}
