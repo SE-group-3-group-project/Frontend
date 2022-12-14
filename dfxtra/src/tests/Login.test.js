@@ -1,9 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import Login from '../Components/Login';
 import { MemoryRouter } from 'react-router-dom';
 
-// Provide mock implementation for DateCreated component
 
 describe(`Login component test suite`, () => {
 
@@ -19,14 +17,5 @@ describe(`Login component test suite`, () => {
             expect(screen.getByText("PASSWORD")).toBeInTheDocument();
         });
 
-        //     test(`it should not render a Completed input and label`, () => {
-        //         expect(screen.queryByRole(/checkbox/)).not.toBeInTheDocument();
-        //     });
-
-        //     test(`it should render a DateCreated component a date`, () => {
-
-        //         expect(screen.getByTestId(`dateCreated`).textContent).toContain(`Date Created Component`);
-        //     });
-        // });
     });
 });
