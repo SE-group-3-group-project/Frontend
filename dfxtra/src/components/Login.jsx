@@ -89,8 +89,5 @@ const Login = ({ setLoginUser }) => {
     );
 }
 
-Login.propTypes = {
-    setLoginUser: PropTypes.func.isRequired
-}
 
 export default Login;
