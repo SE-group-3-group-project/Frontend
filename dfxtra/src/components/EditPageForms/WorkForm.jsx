@@ -31,13 +31,13 @@ function WorkForm({ inputWork, setWork }) {
     }
     const addFields = () => {
         const values = [...workProfiles];
-        values.push({ 
+        values.push({
             type: "",
             employer: "",
             position: "",
             startDate: "",
             endDate: ""
-         });
+        });
         setWorkProfile(values)
     }
 
@@ -51,7 +51,7 @@ function WorkForm({ inputWork, setWork }) {
     const handleSave = () => {
         setWork(workProfiles)
     }
-    
+
 
 
     return (
@@ -61,7 +61,7 @@ function WorkForm({ inputWork, setWork }) {
                     <h2 className="pt-2 pb-4">Work Experience:</h2>
                     <div className="flex flex-row gap-2">
                         <button
-                            className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2"
+                            className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2 hover:bg-royal-blue"
                             onClick={handleSave}
                         >
                             Save
@@ -97,7 +97,7 @@ function WorkForm({ inputWork, setWork }) {
                                             className="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                                             multiple={false}
                                             value={workProfile.type}
-                                            onChange={event => updateWorkFields(index,event)}
+                                            onChange={event => updateWorkFields(index, event)}
                                         >
                                             <option>Select type of employment</option>
                                             <option value="Full-Time">Full-Time</option>
@@ -112,7 +112,7 @@ function WorkForm({ inputWork, setWork }) {
                                             type="text"
                                             placeholder="Architect LLP"
                                             value={workProfile.employer}
-                                            onChange={event => updateWorkFields(index,event)}
+                                            onChange={event => updateWorkFields(index, event)}
                                             required />
                                     </div>
                                     <div className="w-full px-3 pb-4">
@@ -122,7 +122,7 @@ function WorkForm({ inputWork, setWork }) {
                                             type="text"
                                             placeholder="Architect"
                                             value={workProfile.position}
-                                            onChange={event => updateWorkFields(index,event)}
+                                            onChange={event => updateWorkFields(index, event)}
                                             required />
                                     </div>
                                     <div className="w-full px-3 pb-4">
@@ -132,7 +132,7 @@ function WorkForm({ inputWork, setWork }) {
                                             type="date"
                                             placeholder="start date"
                                             value={workProfile.startDate}
-                                            onChange={event => updateWorkFields(index,event)}
+                                            onChange={event => updateWorkFields(index, event)}
                                             required
                                         />
                                     </div>
@@ -143,7 +143,7 @@ function WorkForm({ inputWork, setWork }) {
                                             type="date"
                                             placeholder="end date"
                                             value={workProfile.endDate}
-                                            onChange={event => updateWorkFields(index,event)}
+                                            onChange={event => updateWorkFields(index, event)}
                                             required
                                         />
                                     </div>

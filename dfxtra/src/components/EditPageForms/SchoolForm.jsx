@@ -26,23 +26,23 @@ const SchoolForm = ({ inputSchoolQualifications, setSchoolQualifications }) => {
         startDate: schoolStart,
         endDate: schoolEnd,
     }])
-const updateSchoolFields = (index, event) => {
+    const updateSchoolFields = (index, event) => {
         // const { id, value } = e.target
         const values = [...schoolProfiles];
         values[index][event.target.id] = event.target.value;
         setSchoolProfile(values)
     }
 
-const addFields = () => {
+    const addFields = () => {
         const values = [...schoolProfiles];
-        values.push({ 
+        values.push({
             school: "",
             examType: "",
             subject: "",
             grade: "",
             startDate: "",
-            endDate:""
-         });
+            endDate: ""
+        });
         setSchoolProfile(values)
     }
 
@@ -61,7 +61,7 @@ const addFields = () => {
                 <h2 className="pt-2 pb-4">School:</h2>
                 <div className="flex flex-row gap-2">
                     <button
-                        className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2"
+                        className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2 hover:bg-royal-blue"
                         onClick={handleSave}
                     >
                         Save
@@ -74,18 +74,18 @@ const addFields = () => {
                         Add
                     </button>
                 </div>
-            </div> 
+            </div>
             <div className="flex flex-col" id="school-form">
                 <form className="flex flex-col items-center">
                     {schoolProfiles.map((schoolProfile, index) => {
                         return (
                             <div className="w-full flex flex-col items-center lg:flex lg:flex-row" key={index}>
                                 <button
-                                        className="bg-red-100 text-red-500 text-xl text-center rounded-md py-1 px-3 mt-1.5"
-                                        type="button"
-                                        onClick={() => removeFields(index)}
-                                    >
-                                        X
+                                    className="bg-red-100 text-red-500 text-xl text-center rounded-md py-1 px-3 mt-1.5"
+                                    type="button"
+                                    onClick={() => removeFields(index)}
+                                >
+                                    X
                                 </button>
                                 <div className="w-full px-3 pb-4">
                                     <TextInput
@@ -93,7 +93,7 @@ const addFields = () => {
                                         id="school"
                                         placeholder="Walthamstow Upper School"
                                         value={schoolProfile.school}
-                                        onChange={event => updateSchoolFields(index,event)}
+                                        onChange={event => updateSchoolFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -103,7 +103,7 @@ const addFields = () => {
                                         type="text"
                                         placeholder="Maths"
                                         value={schoolProfile.subject}
-                                        onChange={event => updateSchoolFields(index,event)}
+                                        onChange={event => updateSchoolFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -113,7 +113,7 @@ const addFields = () => {
                                         type="text"
                                         placeholder="A Level"
                                         value={schoolProfile.examType}
-                                        onChange={event => updateSchoolFields(index,event)}
+                                        onChange={event => updateSchoolFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -123,7 +123,7 @@ const addFields = () => {
                                         type="text"
                                         placeholder="A"
                                         value={schoolProfile.grade}
-                                        onChange={event => updateSchoolFields(index,event)}
+                                        onChange={event => updateSchoolFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -136,7 +136,7 @@ const addFields = () => {
                                         id="startDate"
                                         type="date"
                                         value={schoolProfile.startDate}
-                                        onChange={event => updateSchoolFields(index,event)}
+                                        onChange={event => updateSchoolFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -149,7 +149,7 @@ const addFields = () => {
                                         id="endDate"
                                         type="date"
                                         value={schoolProfile.endDate}
-                                        onChange={event => updateSchoolFields(index,event)}
+                                        onChange={event => updateSchoolFields(index, event)}
                                         required />
                                 </div>
                             </div>

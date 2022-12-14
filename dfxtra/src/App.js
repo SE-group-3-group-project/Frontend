@@ -16,7 +16,6 @@ function App() {
 		getProfile(setProfile, setError);
 	};
 
-	console.log(editProfile);
 	useEffect(() => {
 		getProfileHandler();
 	}, []);
@@ -30,13 +29,13 @@ function App() {
 			<Router>
 				<Routes>
 					<Route
-						path="/login"
+						path="/"
 						element={<Login setLoginUser={setLoginUser} />}
 					/>
-					<Route path="/" element={<UserHome data={profile} />} />
+					<Route path="/profile" element={<UserHome data={profile} user={user} />} />
 					<Route
 						path="/edit"
-						element={<Edit profile={profile} setEditProfile={setEditProfile} />}
+						element={<Edit profile={profile} setEditProfile={setEditProfile} user={user} />}
 					/>
 				</Routes>
 			</Router>

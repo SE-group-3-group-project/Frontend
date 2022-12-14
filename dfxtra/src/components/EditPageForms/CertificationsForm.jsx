@@ -31,12 +31,12 @@ const Certifications = ({ inputCertifications, setCertification }) => {
 
     const addFields = () => {
         const values = [...certificationsProfiles];
-        values.push({ 
+        values.push({
             type: "",
             issuer: "",
             grade: "",
             year: "",
-         });
+        });
         setCertificationsProfile(values)
     }
 
@@ -56,7 +56,7 @@ const Certifications = ({ inputCertifications, setCertification }) => {
                 <h2 className="pt-2 pb-4">Certifications:</h2>
                 <div className="flex flex-row gap-2">
                     <button
-                        className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2"
+                        className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2 hover:bg-royal-blue"
                         onClick={handleSave}
                     >
                         Save
@@ -89,7 +89,7 @@ const Certifications = ({ inputCertifications, setCertification }) => {
                                         type="text"
                                         placeholder="IBM Explorer Badge"
                                         value={certificationsProfile.type}
-                                        onChange={event => updateCertificationsFields(index,event)}
+                                        onChange={event => updateCertificationsFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -99,7 +99,7 @@ const Certifications = ({ inputCertifications, setCertification }) => {
                                         type="text"
                                         placeholder="IBM"
                                         value={certificationsProfile.issuer}
-                                        onChange={event => updateCertificationsFields(index,event)}
+                                        onChange={event => updateCertificationsFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -109,7 +109,7 @@ const Certifications = ({ inputCertifications, setCertification }) => {
                                         type="text"
                                         placeholder="Pass"
                                         value={certificationsProfile.grade}
-                                        onChange={event => updateCertificationsFields(index,event)}
+                                        onChange={event => updateCertificationsFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -121,7 +121,7 @@ const Certifications = ({ inputCertifications, setCertification }) => {
                                         max="2022"
                                         placeholder="2020"
                                         value={certificationsProfile.year}
-                                        onChange={event => updateCertificationsFields(index,event)}
+                                        onChange={event => updateCertificationsFields(index, event)}
                                         required />
                                 </div>
                             </div>

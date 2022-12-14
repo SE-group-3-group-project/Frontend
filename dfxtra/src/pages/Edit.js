@@ -36,7 +36,7 @@ const Edit = ({ profile, setEditProfile }) => {
 
 		return (
 			<>
-				<Header />
+				<Header profilePicture={profilePicture} />
 				<EditProgress progress={progress} totalData={totalData} />
 				<EditInfo
 					progress={progress}

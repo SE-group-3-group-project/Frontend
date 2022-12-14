@@ -20,7 +20,7 @@ const Portfolio = ({ inputPortfolio, setPortfolio }) => {
         year: portfolioYear,
         description: portfolioDescription,
     }])
-    
+
     const updatePortfolioFields = (index, event) => {
         const values = [...portfolioProfiles];
         values[index][event.target.id] = event.target.value;
@@ -29,12 +29,12 @@ const Portfolio = ({ inputPortfolio, setPortfolio }) => {
 
     const addFields = () => {
         const values = [...portfolioProfiles];
-        values.push({ 
+        values.push({
             title: "",
             url: "",
             year: "",
             description: "",
-         });
+        });
         setPortfolioProfile(values)
     }
 
@@ -54,7 +54,7 @@ const Portfolio = ({ inputPortfolio, setPortfolio }) => {
                 <h2 className="pt-2 pb-4">Portfolio:</h2>
                 <div className="flex flex-row gap-2">
                     <button
-                        className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2"
+                        className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2 hover:bg-royal-blue"
                         onClick={handleSave}
                     >
                         Save
@@ -73,13 +73,13 @@ const Portfolio = ({ inputPortfolio, setPortfolio }) => {
                     {portfolioProfiles.map((portfolioProfile, index) => {
                         return (
                             <div className="w-full flex flex-col items-center lg:flex lg:flex-row" key={index}>
-                                    <button
-                                        className="bg-red-100 text-red-500 text-xl text-center rounded-md py-1 px-3 mt-1.5"
-                                        type="button"
-                                        onClick={() => removeFields(index)}
-                                    >
-                                        X
-                                    </button>
+                                <button
+                                    className="bg-red-100 text-red-500 text-xl text-center rounded-md py-1 px-3 mt-1.5"
+                                    type="button"
+                                    onClick={() => removeFields(index)}
+                                >
+                                    X
+                                </button>
                                 <div className="w-full px-3 pb-4">
                                     <Input
                                         label="title"
@@ -87,7 +87,7 @@ const Portfolio = ({ inputPortfolio, setPortfolio }) => {
                                         type="text"
                                         placeholder="A dad jokes app"
                                         value={portfolioProfile.title}
-                                        onChange={event => updatePortfolioFields(index,event)}
+                                        onChange={event => updatePortfolioFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -97,7 +97,7 @@ const Portfolio = ({ inputPortfolio, setPortfolio }) => {
                                         type="url"
                                         placeholder="https://kxcgu.github.io/dad-jokes"
                                         value={portfolioProfile.url}
-                                        onChange={event => updatePortfolioFields(index,event)}
+                                        onChange={event => updatePortfolioFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -109,7 +109,7 @@ const Portfolio = ({ inputPortfolio, setPortfolio }) => {
                                         max="2022"
                                         placeholder="2022"
                                         value={portfolioProfile.year}
-                                        onChange={event => updatePortfolioFields(index,event)}
+                                        onChange={event => updatePortfolioFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -119,7 +119,7 @@ const Portfolio = ({ inputPortfolio, setPortfolio }) => {
                                         type="text"
                                         placeholder="An app made to extend React knowledge"
                                         value={portfolioProfile.description}
-                                        onChange={event => updatePortfolioFields(index,event)}
+                                        onChange={event => updatePortfolioFields(index, event)}
                                         required />
                                 </div>
                             </div>

@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Link, Navigate, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import Header from './Header';
+import HomeHeader from './HomeHeader';
 import Footer from './Footer';
 
 const Login = ({ setLoginUser }) => {
@@ -50,7 +49,7 @@ const Login = ({ setLoginUser }) => {
 
     return (
         <>
-            <Header />
+            <HomeHeader />
             {loggedIn && <Navigate to="/" state={{ from: location }} />}
             <div className="px-12 py-6 m-4 bg-white rounded-2xl grid h-screen place-items-center">
                 <div className="border p-5 rounded ">

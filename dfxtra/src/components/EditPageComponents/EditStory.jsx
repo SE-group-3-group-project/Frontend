@@ -22,12 +22,14 @@ const EditStory = ({ progress, setProgress, stories, setCurrentStories }) => {
     const inputPortfolio = stories.portfolio;
 
     const handleSave = () => {
-        setProgress(progress + 50)
+        if (progress < 100) {
+            setProgress(progress + 50)
+        }
         const data = { workExperiences, degrees, schoolQualifications, certifications, personalAchievements, portfolio };
         setCurrentStories(data)
     }
 
-  
+
 
     return (
         <>

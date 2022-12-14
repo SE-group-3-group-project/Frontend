@@ -35,14 +35,14 @@ const DegreeForm = ({ inputDegrees, setDegree }) => {
 
     const addFields = () => {
         const values = [...degreesProfiles];
-        values.push({ 
+        values.push({
             university: "",
-        degreeSubject: "",
-        degreeLevel: "",
-        grade: "",
-        startDate: "",
-        endDate: "",
-         });
+            degreeSubject: "",
+            degreeLevel: "",
+            grade: "",
+            startDate: "",
+            endDate: "",
+        });
         setDegreesProfile(values)
     }
 
@@ -62,7 +62,7 @@ const DegreeForm = ({ inputDegrees, setDegree }) => {
                 <h2 className="pt-2 pb-4">Degrees:</h2>
                 <div className="flex flex-row gap-3">
                     <button
-                        className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2"
+                        className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2 hover:bg-royal-blue"
                         onClick={handleSave}
                     >
                         Save
@@ -94,7 +94,7 @@ const DegreeForm = ({ inputDegrees, setDegree }) => {
                                         id="university"
                                         placeholder="University of Arts London"
                                         value={degreesProfile.university}
-                                        onChange={event => updateDegreesFields(index,event)}
+                                        onChange={event => updateDegreesFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -104,7 +104,7 @@ const DegreeForm = ({ inputDegrees, setDegree }) => {
                                         type="text"
                                         placeholder="Photography"
                                         value={degreesProfile.degreeSubject}
-                                        onChange={event => updateDegreesFields(index,event)}
+                                        onChange={event => updateDegreesFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -114,7 +114,7 @@ const DegreeForm = ({ inputDegrees, setDegree }) => {
                                         type="text"
                                         placeholder="Masters"
                                         value={degreesProfile.degreeLevel}
-                                        onChange={event => updateDegreesFields(index,event)}
+                                        onChange={event => updateDegreesFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -124,7 +124,7 @@ const DegreeForm = ({ inputDegrees, setDegree }) => {
                                         type="text"
                                         placeholder="2:1"
                                         value={degreesProfile.grade}
-                                        onChange={event => updateDegreesFields(index,event)}
+                                        onChange={event => updateDegreesFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -137,7 +137,7 @@ const DegreeForm = ({ inputDegrees, setDegree }) => {
                                         id="startDate"
                                         type="date"
                                         value={degreesProfile.startDate}
-                                        onChange={event => updateDegreesFields(index,event)}
+                                        onChange={event => updateDegreesFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -150,7 +150,7 @@ const DegreeForm = ({ inputDegrees, setDegree }) => {
                                         id="endDate"
                                         type="date"
                                         value={degreesProfile.endDate}
-                                        onChange={event => updateDegreesFields(index,event)}
+                                        onChange={event => updateDegreesFields(index, event)}
                                         required />
                                 </div>
                                 <div className="flex flex-col">

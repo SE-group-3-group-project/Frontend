@@ -26,11 +26,11 @@ const PersonalAchievementsForm = ({ inputAchievements, setAchievements }) => {
     }
     const addFields = () => {
         const values = [...achievementsProfiles];
-        values.push({ 
+        values.push({
             achievement: "",
             description: "",
             year: "",
-         });
+        });
         setAchievementsProfile(values)
     }
 
@@ -49,7 +49,7 @@ const PersonalAchievementsForm = ({ inputAchievements, setAchievements }) => {
                 <h2 className="pt-2 pb-4">Personal Achievements:</h2>
                 <div className="flex flex-row gap-2">
                     <button
-                        className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2"
+                        className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2 hover:bg-royal-blue"
                         onClick={handleSave}
                     >
                         Save
@@ -68,20 +68,20 @@ const PersonalAchievementsForm = ({ inputAchievements, setAchievements }) => {
                     {achievementsProfiles.map((achievementsProfile, index) => {
                         return (
                             <div className="w-full flex flex-col items-center lg:flex lg:flex-row" key={index}>
-                                    <button
-                                        className="bg-red-100 text-red-500 text-xl text-center rounded-md py-1 px-3 mt-1.5"
-                                        type="button"
-                                        onClick={() => removeFields(index)}
-                                    >
-                                        X
-                                    </button>
+                                <button
+                                    className="bg-red-100 text-red-500 text-xl text-center rounded-md py-1 px-3 mt-1.5"
+                                    type="button"
+                                    onClick={() => removeFields(index)}
+                                >
+                                    X
+                                </button>
                                 <div className="w-full px-3 pb-4">
                                     <TextInput
                                         label="achievement"
                                         id="achievement"
                                         placeholder="Regional Juggling Champion"
                                         value={achievementsProfile.achievement}
-                                        onChange={event => updateAchievementsFields(index,event)}
+                                        onChange={event => updateAchievementsFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -91,7 +91,7 @@ const PersonalAchievementsForm = ({ inputAchievements, setAchievements }) => {
                                         type="text"
                                         placeholder="First place out of 30 contestants"
                                         value={achievementsProfile.description}
-                                        onChange={event => updateAchievementsFields(index,event)}
+                                        onChange={event => updateAchievementsFields(index, event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -103,7 +103,7 @@ const PersonalAchievementsForm = ({ inputAchievements, setAchievements }) => {
                                         max="2022"
                                         placeholder="year completed"
                                         value={achievementsProfile.year}
-                                        onChange={event => updateAchievementsFields(index,event)}
+                                        onChange={event => updateAchievementsFields(index, event)}
                                         required />
                                 </div>
                             </div>

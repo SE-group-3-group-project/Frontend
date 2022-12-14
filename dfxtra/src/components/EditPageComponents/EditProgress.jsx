@@ -1,7 +1,12 @@
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
+import { useState } from "react";
+
 const EditProgress = ({ progress, totalData }) => {
+    const [error, setError] = useState("")
     const { name, pronoun, profilePicture, contactDetails, nationality, personality, personalStories } = totalData;
     const { workExperiences, degrees, schoolQualifications, certifications, personalAchievements, portfolio } = personalStories;
+
     const handleSubmit = async () => {
         const submitData = {
             name: name,
@@ -10,7 +15,7 @@ const EditProgress = ({ progress, totalData }) => {
             contactDetails: {
                 personalEmail: contactDetails.personalEmail,
                 dfEmail: contactDetails.dfEmail,
-                github: contactDetails.dfEmail,
+                github: contactDetails.github,
                 linkedIn: contactDetails.linkedIn,
                 phoneNumber: contactDetails.phoneNumber
             },
@@ -25,14 +30,18 @@ const EditProgress = ({ progress, totalData }) => {
                 portfolio: portfolio
             }
         }
-        console.log(submitData);
-            try {
-                 await axios.put(
-                    `${process.env.REACT_APP_LOCALHOST}63974c4181a2a1af5d8f2f35`,
-                    submitData
-                );
-            } catch (error) {
-            }
+        try {
+            await axios.put(
+                `${process.env.REACT_APP_LOCALHOST}63974c4181a2a1af5d8f2f35`,
+                submitData
+            );
+        } catch (error) {
+            setError(error)
+        }
+
+        if (!error) {
+            <Navigate to="/profile" />
+        }
     }
 
     return (
@@ -54,7 +63,10 @@ const EditProgress = ({ progress, totalData }) => {
                 </div>
             </div>
             <div className="flex flex-row items-center justify-center gap-4">
-                <button className="h-fit border rounded-full bg-white px-3 py-1 sm:py-3 sm:px-4 hover:bg-light-blue hover:text-white" onClick={handleSubmit}>Submit Draft</button>
+                <button
+                    className="h-fit border rounded-full bg-white px-3 py-1 sm:py-3 sm:px-4 hover:bg-light-blue hover:text-white"
+                    onClick={handleSubmit}
+                >Submit Draft</button>
                 <button className="h-fit border rounded-full bg-royal-blue text-white px-3 py-1 sm:py-3 sm:px-4 hover:opacity-70">Reset Draft</button>
             </div>
         </div >

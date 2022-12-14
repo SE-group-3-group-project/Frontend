@@ -1,6 +1,6 @@
 import Profile from "../components/Profile";
 import Footer from "../components/Footer";
-import HomeHeader from "../components/HomeHeader";
+import Header from "../components/Header";
 
 const UserHome = ({ data }) => {
     if (Object.keys(data).length > 0) {
@@ -18,7 +18,7 @@ const UserHome = ({ data }) => {
         const stories = data.personalStories;
         return (
             <>
-               <HomeHeader profilePicture={profilePicture}/>
+                <Header profilePicture={profilePicture} />
                 <Profile
                     key={key}
                     name={first + " " + last + " (" + pronouns + ")"}

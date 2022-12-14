@@ -23,9 +23,11 @@ const EditInfo = ({ progress, setProgress, firstName, lastName, pronouns, profil
         setProfile({ ...profile, [id]: value })
     }
 
-    
+
     const handleSubmit = async (e) => {
-        setProgress(progress + 50)
+        if (progress < 100) {
+            setProgress(progress + 50)
+        }
         e.preventDefault();
 
         const name = {
@@ -90,7 +92,7 @@ const EditInfo = ({ progress, setProgress, firstName, lastName, pronouns, profil
                                 <input
                                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     name="person-email"
-                                    id="personal-email"
+                                    id="personalEmail"
                                     type="email"
                                     placeholder="s.sloth@example.com"
                                     value={profile.personalEmail}
@@ -105,7 +107,7 @@ const EditInfo = ({ progress, setProgress, firstName, lastName, pronouns, profil
                             <input
                                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 name="df-email"
-                                id="df-email"
+                                id="workEmail"
                                 type="email"
                                 placeholder="s.sloth@digitalfutures.com"
                                 value={profile.workEmail}
@@ -121,7 +123,7 @@ const EditInfo = ({ progress, setProgress, firstName, lastName, pronouns, profil
                                 <input
                                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     name="github"
-                                    id="github"
+                                    id="githubAcc"
                                     type="text"
                                     placeholder="github username"
                                     value={profile.githubAcc}
@@ -138,7 +140,7 @@ const EditInfo = ({ progress, setProgress, firstName, lastName, pronouns, profil
                                 <input
                                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     name="linkedin"
-                                    id="linkedin"
+                                    id="linkedinAcc"
                                     type="text"
                                     placeholder="linkedin username"
                                     value={profile.linkedinAcc}
@@ -153,7 +155,7 @@ const EditInfo = ({ progress, setProgress, firstName, lastName, pronouns, profil
                             <input
                                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 name="phone"
-                                id="phone"
+                                id="number"
                                 type="text"
                                 placeholder="phone number"
                                 value={profile.number}
