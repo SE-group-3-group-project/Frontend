@@ -9,11 +9,10 @@ import Login from "./components/Login.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 
-
 function App() {
-	const [user, setLoginUser] = useState({});
-	const [profile, setProfile] = useState([]);
-	const [error, setError] = useState("");
+  const [user, setLoginUser] = useState({});
+  const [profile, setProfile] = useState([]);
+  const [error, setError] = useState("");
 
   const getProfile = async () => {
     try {
