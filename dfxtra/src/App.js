@@ -1,17 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import 'tailwindcss/tailwind.css';
-import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import "tailwindcss/tailwind.css";
+import { getProfile } from "./AsyncFunctions/dfxtraAPICalls";
+import axios from "axios";
 import Edit from './pages/Edit';
-import UserHome from './pages/UserHome';
-import Login from './components/Login.jsx';
-import Header from './components/Header.jsx'
-import Footer from './components/Footer.jsx'
+import UserHome from "./pages/UserHome";
+import Login from "./components/Login.jsx";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
+
 
 function App() {
-  const [user, setLoginUser] = useState({});
-  const [profile, setProfile] = useState([]);
-  const [error, setError] = useState("");
+	const [user, setLoginUser] = useState({});
+	const [profile, setProfile] = useState([]);
+	const [error, setError] = useState("");
 
   const getProfile = async () => {
     try {
