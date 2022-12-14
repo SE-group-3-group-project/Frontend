@@ -12,25 +12,22 @@ const HomeHeader = () => {
             <a href="/" className='text-sm sm:text-base pr-4'>
             Need help? Talk to us
           </a>
-          <div className="text-right">
-          <div className="d-flex align-items-center mb-4">
-          <div className="flex-shrink-0"> 
-         <MDBCardImage
-                      style={{ width: '50px' }}
-                      className="img-fluid rounded-circle border border-dark border-3"
-                      //src={profilePicture}
-                      src="https://www.gstatic.com/webp/gallery/2.jpg"
-                      //src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-2.webp'
-                      alt='Generic placeholder image'
-                      fluid /> 
-           <a href="/login" className='text-sm sm:text-base pr-4'>
+       <a href="/login" className='text-sm sm:text-base pr-4'>
            Log out
           </a>
+         
+          <div className="flex-shrink-0">
+          <MDBCardImage
+                      style={{ width: '50px', height: '50px', borderRadius:'50%' }}
+                      className="img-fluid rounded-circle border border-dark border-3"
+                      src="https://www.gstatic.com/webp/gallery/2.jpg"
+                     
+                      alt='grad profile'
+                      fluid />
+          </div>
         </div>
-        </div>
-        </div>
-        </div>
-      </nav>
+        
+        </nav>
     </div>
     
     
