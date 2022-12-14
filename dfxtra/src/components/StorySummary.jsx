@@ -1,4 +1,5 @@
-const StorySummary = ({ key, story }) => {
+const StorySummary = ({ story }) => {
+    let key;
 
     const date = (startDate, endDate) => {
         const d = new Date(startDate);
@@ -49,7 +50,10 @@ const StorySummary = ({ key, story }) => {
                 return (
                     <div className="sm:grid sm:grid-cols-4 sm:gap-y-2 sm:gap-x-4 py-2" key={key}>
                         <p>{date(qualification.startDate, qualification.endDate)}</p>
-                        <p>{qualification.school}</p>
+                        <div className="flex flex-col">
+                            <p>{qualification.school}</p>
+                            <p>{qualification.examType}</p>
+                        </div>
                         <div className="flex flex-col">
                             {qualification.subject.map(sub => {
                                 if (qualification.subject.length > 0) {
@@ -96,9 +100,26 @@ const StorySummary = ({ key, story }) => {
                 key = Math.random();
                 return (
                     <>
-                        <div className="flex flex-row gap-6">
+                        <div className="flex flex-row gap-6" key={key}>
                             <p className="font-medium">{achievement.achievement}:</p>
-                            <p>{achievement.description}</p>
+                            <p>{achievement.description}, {achievement.year}</p>
+                        </div>
+                    </>
+                )
+            }
+        })
+
+    const allPortfolio =
+        story.portfolio.map(project => {
+            if (story.portfolio.length > 0) {
+                key = Math.random();
+                return (
+                    <>
+                        <div className="flex flex-row gap-6" key={key}>
+                            <p className="font-medium">{project.title}:</p>
+                            <p>{project.url}</p>
+                            <p>{project.description}</p>
+                            <p>{project.year}</p>
                         </div>
                     </>
                 )
@@ -129,6 +150,12 @@ const StorySummary = ({ key, story }) => {
                     <p className="font-medium">Personal Achievements:</p>
                     <div className="sm:grid sm:grid-cols-2 sm:gap-y-2 sm:gap-x-4 py-2">
                         {allAchievement}
+                    </div>
+                </div>
+                <div className="my-2 sm:py-2">
+                    <p className="font-medium">Portfolio:</p>
+                    <div className="my-2 sm:py-2 border-b border-dashed border-mid-grey border-opacity-20">
+                        {allPortfolio}
                     </div>
                 </div>
             </div>
