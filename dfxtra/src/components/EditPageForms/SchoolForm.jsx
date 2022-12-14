@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TextInput from "../../Utils/Input.jsx"
+import TextInput from "../../utils/Input.jsx"
 
 const SchoolForm = ({ inputSchoolQualifications, setSchoolQualifications }) => {
     let schoolName;
