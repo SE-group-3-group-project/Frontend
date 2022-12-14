@@ -1,6 +1,6 @@
 import logo from './images/logo.svg';
 import {MDBCardImage} from 'mdb-react-ui-kit';
-const HomeHeader = () => {
+const HomeHeader = ({profilePicture}) => {
  
   return (
   <div className="text-white bg-black-blue">
@@ -20,7 +20,8 @@ const HomeHeader = () => {
           <MDBCardImage
                       style={{ width: '50px', height: '50px', borderRadius:'50%' }}
                       className="img-fluid rounded-circle border border-dark border-3"
-                      src="https://www.gstatic.com/webp/gallery/2.jpg"
+                      src= {profilePicture}
+                      //src="https://www.gstatic.com/webp/gallery/2.jpg"
                      
                       alt='grad profile'
                       fluid />
