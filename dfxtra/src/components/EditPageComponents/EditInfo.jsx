@@ -1,16 +1,46 @@
 import { useState } from "react";
+import axios from "axios";
 
-const EditInfo = ({ progress, setProgress }) => {
+const EditInfo = ({ progress, setProgress, firstName, lastName, pronouns, profilePicture, pEmail, dfEmail, github, linkedin, phone, nationality, personality }) => {
+
     const [selectedImage, setSelectedImage] = useState(null);
+
+    const [profile, setProfile] = useState({
+        first: firstName,
+        last: lastName,
+        pronoun: pronouns.replaceAll("/", "-"),
+        photo: profilePicture,
+        personalEmail: pEmail,
+        workEmail: dfEmail,
+        githubAcc: github,
+        linkedinAcc: linkedin,
+        number: phone,
+        country: nationality.toLowerCase(),
+        mbti: personality,
+    })
+
+    const updateInfoFields = (e) => {
+        const { id, value } = e.target
+        setProfile({ ...profile, [id]: value })
+    }
 
     const handleSave = () => {
         setProgress(progress + 50)
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (profile) {
+            await axios.put("http://localhost:4000/gradprofile/63974c4181a2a1af5d8f2f35", profile)
+        }
+    }
+
     return (
         <div className="px-12 py-6 m-4 bg-white rounded-2xl">
             <h1 className="pt-2 pb-4 text-xl text-royal-blue">Personal Information</h1>
-            <form className="flex flex-col">
+
+            <form className="flex flex-col" onSubmit={handleSubmit}>
                 <div className="flex flex-col sm:flex-row justify-between md:justify-evenly gap-4 py-3">
                     <div>
                         <div className="w-full max-w-md">
@@ -21,9 +51,11 @@ const EditInfo = ({ progress, setProgress }) => {
                                 <input
                                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                                     name="firstName"
-                                    id="first-name"
+                                    id="first"
                                     type="text"
                                     placeholder="Stressed"
+                                    value={profile.first}
+                                    onChange={updateInfoFields}
                                     required />
                             </div>
                             <div className="w-full px-3 pb-4">
@@ -32,9 +64,11 @@ const EditInfo = ({ progress, setProgress }) => {
                                 </label>
                                 <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     name="lastName"
-                                    id="last-name"
+                                    id="last"
                                     type="text"
                                     placeholder="Sloth"
+                                    value={profile.last}
+                                    onChange={updateInfoFields}
                                     required />
                             </div>
                             <div className="w-full px-3 pb-4">
@@ -47,6 +81,8 @@ const EditInfo = ({ progress, setProgress }) => {
                                     id="personal-email"
                                     type="email"
                                     placeholder="s.sloth@example.com"
+                                    value={profile.personalEmail}
+                                    onChange={updateInfoFields}
                                     required />
                             </div>
                         </div>
@@ -60,6 +96,8 @@ const EditInfo = ({ progress, setProgress }) => {
                                 id="df-email"
                                 type="email"
                                 placeholder="s.sloth@digitalfutures.com"
+                                value={profile.workEmail}
+                                onChange={updateInfoFields}
                                 required />
                         </div>
                         <div className="w-full px-3 pb-4">
@@ -74,6 +112,8 @@ const EditInfo = ({ progress, setProgress }) => {
                                     id="github"
                                     type="text"
                                     placeholder="github username"
+                                    value={profile.githubAcc}
+                                    onChange={updateInfoFields}
                                     required />
                             </div>
                         </div>
@@ -89,6 +129,8 @@ const EditInfo = ({ progress, setProgress }) => {
                                     id="linkedin"
                                     type="text"
                                     placeholder="linkedin username"
+                                    value={profile.linkedinAcc}
+                                    onChange={updateInfoFields}
                                     required />
                             </div>
                         </div>
@@ -102,21 +144,35 @@ const EditInfo = ({ progress, setProgress }) => {
                                 id="phone"
                                 type="text"
                                 placeholder="phone number"
+                                value={profile.number}
+                                onChange={updateInfoFields}
                                 required />
 
                         </div>
                     </div>
                     <div>
                         <div className="flex flex-col items-center justify-center gap-14">
-                            <select id="pronoun" name="pronoun" className="block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                                <option>Your Preferred Pronoun</option>
+                            <select
+                                id="pronoun"
+                                name="pronoun"
+                                className="block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                                value={profile.pronoun}
+                                onChange={updateInfoFields}
+                            >
+                                <option>Your Pronoun</option>
                                 <option value="she-her">She/Her</option>
                                 <option value="he-him">He/Him</option>
                                 <option value="they-them">They/Them</option>
                                 <option value="he-they">He/They</option>
                                 <option value="she-they">She/They</option>
                             </select>
-                            <select id="nationality" name="nationality" className="block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            <select
+                                id="country"
+                                name="country"
+                                className="block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                                value={profile.country}
+                                onChange={updateInfoFields}
+                            >
                                 <option>Your Nationality</option>
                                 <option value="afghan">Afghan</option>
                                 <option value="albanian">Albanian</option>
@@ -311,7 +367,13 @@ const EditInfo = ({ progress, setProgress }) => {
                                 <option value="zambian">Zambian</option>
                                 <option value="zimbabwean">Zimbabwean</option>
                             </select>
-                            <select id="personality" name="personality" className="block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            <select
+                                id="mbti"
+                                name="mbti"
+                                className="block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                                value={profile.mbti}
+                                onChange={updateInfoFields}
+                            >
                                 <option>Your Personality Type</option>
                                 <option value="ISTJ">ISTJ</option>
                                 <option value="ESTJ">ESTJ</option>
@@ -335,7 +397,13 @@ const EditInfo = ({ progress, setProgress }) => {
                                     <div className="flex flex-col items-center justify-center pb-6">
                                         {selectedImage ? (
                                             <div className="flex flex-col items-center">
-                                                <img alt="profile" className="border rounded-lg" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+                                                <img
+                                                    id="photo"
+                                                    alt="profile"
+                                                    className="border rounded-lg"
+                                                    width={"250px"}
+                                                    src={URL.createObjectURL(selectedImage)}
+                                                />
                                                 <br />
                                                 <button className="bg-mid-grey rounded px-2 py-1 text-white" onClick={() => setSelectedImage(null)}>Remove</button>
                                             </div>
@@ -365,6 +433,7 @@ const EditInfo = ({ progress, setProgress }) => {
                     Save
                 </button>
             </form >
+
         </div >
     );
 };

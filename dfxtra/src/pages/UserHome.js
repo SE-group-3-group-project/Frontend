@@ -5,7 +5,6 @@ import HomeHeader from "../components/HomeHeader";
 const UserHome = ({ data }) => {
     if (Object.keys(data).length > 0) {
         const key = data._id.toString();
-        console.log(key);
         const { first, last } = data.name;
         const pronouns = data.pronoun.replaceAll("-", "/");
         const profilePicture = data.profilePicture;
@@ -14,6 +13,8 @@ const UserHome = ({ data }) => {
         const github = data.contactDetails.github;
         const linkedIn = data.contactDetails.linkedIn;
         const phone = data.contactDetails.phoneNumber;
+        const nationality = data.nationality;
+        const personality = data.personality;
         const stories = data.personalStories;
         return (
             <>
@@ -27,6 +28,8 @@ const UserHome = ({ data }) => {
                     github={github}
                     linkedin={linkedIn}
                     phone={phone}
+                    nationality={nationality}
+                    personality={personality}
                     story={stories}
                 />
                 <Footer />
