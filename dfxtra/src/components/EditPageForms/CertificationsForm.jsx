@@ -121,8 +121,8 @@ const Certifications = ({ certifications }) => {
                                     </button>
                                 </div>
                             </div>
-                        );
-                    })};
+                        )
+                    })}
                 </form>
             </div>
         </div>

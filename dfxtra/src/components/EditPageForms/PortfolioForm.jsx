@@ -120,8 +120,8 @@ const Portfolio = ({ portfolio }) => {
                                     </button>
                                 </div>
                             </div>
-                        );
-                    })};
+                        )
+                    })}
                 </form>
             </div>
         </div>
