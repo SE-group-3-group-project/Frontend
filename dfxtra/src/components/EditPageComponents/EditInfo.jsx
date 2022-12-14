@@ -1,7 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 
-const EditInfo = ({ progress, setProgress, firstName, lastName, pronouns, profilePicture, pEmail, dfEmail, github, linkedin, phone, nationality, personality }) => {
+const EditInfo = ({ progress, setProgress, firstName, lastName, pronouns, profilePicture, pEmail, dfEmail, github, linkedin, phone, nationality, personality, setInfo }) => {
 
     const [selectedImage, setSelectedImage] = useState(null);
 
@@ -24,16 +23,29 @@ const EditInfo = ({ progress, setProgress, firstName, lastName, pronouns, profil
         setProfile({ ...profile, [id]: value })
     }
 
-    const handleSave = () => {
-        setProgress(progress + 50)
-    }
-
+    
     const handleSubmit = async (e) => {
+        setProgress(progress + 50)
         e.preventDefault();
 
-        if (profile) {
-            await axios.put("http://localhost:4000/gradprofile/63974c4181a2a1af5d8f2f35", profile)
+        const name = {
+            first: profile.first,
+            last: profile.last
         }
+        const contactDetails = {
+            personalEmail: profile.personalEmail,
+            dfEmail: profile.workEmail,
+            github: profile.githubAcc,
+            linkedIn: profile.linkedinAcc,
+            phoneNumber: profile.number
+
+        }
+        const sendInfo = {
+            name: name, pronoun: profile.pronoun, profilePicture: profile.photo, contactDetails: contactDetails, nationality: profile.country, personality: profile.mbti
+        }
+        setInfo(sendInfo);
+
+
     }
 
     return (
@@ -427,8 +439,7 @@ const EditInfo = ({ progress, setProgress, firstName, lastName, pronouns, profil
                 </div>
                 <button
                     className="w-9/12 place-self-center border rounded-2xl bg-royal-blue text-white px-4 py-1 sm:py-3 sm:px-5 hover:opacity-70"
-                    type="button"
-                    onClick={handleSave}
+                    type="submit"
                 >
                     Save
                 </button>

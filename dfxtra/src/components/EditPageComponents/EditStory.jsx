@@ -6,18 +6,28 @@ import Portfolio from "../EditPageForms/PortfolioForm";
 import SchoolForm from "../EditPageForms/SchoolForm";
 import WorkForm from "../EditPageForms/WorkForm";
 
-const EditStory = ({ progress, setProgress, stories }) => {
-    const workExperiences = stories.workExperiences;
-    const degrees = stories.degrees;
-    const schoolQualifications = stories.schoolQualifications;
-    const certifications = stories.certifications;
-    const personalAchievements = stories.personalAchievements;
-    const portfolio = stories.portfolio;
+const EditStory = ({ progress, setProgress, stories, setCurrentStories }) => {
+    const [workExperiences, setWork] = useState({})
+    const [degrees, setDegree] = useState({})
+    const [schoolQualifications, setSchoolQualifications] = useState({})
+    const [certifications, setCertifications] = useState({});
+    const [personalAchievements, setAchievements] = useState({});
+    const [portfolio, setPortfolio] = useState({})
+
+    const inputWork = stories.workExperiences;
+    const inputDegrees = stories.degrees;
+    const inputSchoolQualifications = stories.schoolQualifications;
+    const inputCertifications = stories.certifications;
+    const inputAchievements = stories.personalAchievements;
+    const inputPortfolio = stories.portfolio;
 
     const handleSave = () => {
         setProgress(progress + 50)
+        const data = { workExperiences, degrees, schoolQualifications, certifications, personalAchievements, portfolio };
+        setCurrentStories(data)
     }
 
+  
 
     return (
         <>
@@ -25,22 +35,28 @@ const EditStory = ({ progress, setProgress, stories }) => {
                 <h1 className="pt-2 text-xl text-royal-blue">Personal Story</h1>
                 <div className="flex flex-col justify-between md:justify-evenly gap-4 py-3">
                     <WorkForm
-                        workExperiences={workExperiences}
+                        inputWork={inputWork}
+                        setWork={setWork}
                     />
                     <DegreeForm
-                        degrees={degrees}
+                        inputDegrees={inputDegrees}
+                        setDegree={setDegree}
                     />
                     <SchoolForm
-                        schoolQualifications={schoolQualifications}
+                        inputSchoolQualifications={inputSchoolQualifications}
+                        setSchoolQualifications={setSchoolQualifications}
                     />
                     <Certifications
-                        certifications={certifications}
+                        inputCertifications={inputCertifications}
+                        setCertification={setCertifications}
                     />
                     <PersonalAchievementsForm
-                        personalAchievements={personalAchievements}
+                        inputAchievements={inputAchievements}
+                        setAchievements={setAchievements}
                     />
                     <Portfolio
-                        portfolio={portfolio}
+                        inputPortfolio={inputPortfolio}
+                        setPortfolio={setPortfolio}
                     />
                 </div>
                 <button

@@ -1,90 +1,99 @@
 import { useState } from "react";
 import TextInput from "../../utils/Input"
 
-const SchoolForm = ({ schoolQualifications }) => {
-    let school;
-    let examType;
-    let subject;
-    let grade;
-    let startDate;
-    let endDate;
+const SchoolForm = ({ inputSchoolQualifications, setSchoolQualifications }) => {
+    let schoolName;
+    let schoolExamType;
+    let schoolSubject;
+    let schoolGrade;
+    let schoolStart;
+    let schoolEnd;
 
-    for (let i = 0; i < schoolQualifications.length; i++) {
-        school = schoolQualifications[i].school;
-        examType = schoolQualifications[i].examType;
-        subject = schoolQualifications[i].subject;
-        grade = schoolQualifications[i].grade;
-        startDate = new Date(schoolQualifications[i].startDate).toISOString().split('T')[0];
-        endDate = new Date(schoolQualifications[i].endDate).toISOString().split('T')[0];
+    for (let i = 0; i < inputSchoolQualifications.length; i++) {
+        schoolName = inputSchoolQualifications[i].school;
+        schoolExamType = inputSchoolQualifications[i].examType;
+        schoolSubject = inputSchoolQualifications[i].subject;
+        schoolGrade = inputSchoolQualifications[i].grade;
+        schoolStart = new Date(inputSchoolQualifications[i].startDate).toISOString().split('T')[0];
+        schoolEnd = new Date(inputSchoolQualifications[i].endDate).toISOString().split('T')[0];
     }
 
-    const [schoolProfile, setSchoolProfile] = useState({
-        schoolName: school,
-        schoolExamType: examType,
-        schoolSubject: subject,
-        schoolGrade: grade,
-        schoolStart: startDate,
-        schoolEnd: endDate,
-    })
-
-    const updateSchoolFields = (e) => {
-        const { id, value } = e.target
-        setSchoolProfile({ ...schoolProfile, [id]: value })
+    const [schoolProfiles, setSchoolProfile] = useState([{
+        school: schoolName,
+        examType: schoolExamType,
+        subject: schoolSubject,
+        grade: schoolGrade,
+        startDate: schoolStart,
+        endDate: schoolEnd,
+    }])
+const updateSchoolFields = (index, event) => {
+        // const { id, value } = e.target
+        const values = [...schoolProfiles];
+        values[index][event.target.id] = event.target.value;
+        setSchoolProfile(values)
     }
 
-    const [formFields, setFormFields] = useState([
-        {
+const addFields = () => {
+        const values = [...schoolProfiles];
+        values.push({ 
             school: "",
             examType: "",
             subject: "",
             grade: "",
             startDate: "",
-            endDate: "",
-        },
-    ])
-
-    const addFields = () => {
-        let object = {
-            school: "",
-            examType: "",
-            subject: "",
-            grade: "",
-            startDate: "",
-            endDate: "",
-        }
-
-        setFormFields([...formFields, object])
+            endDate:""
+         });
+        setSchoolProfile(values)
     }
 
     const removeFields = (index) => {
-        let data = [...formFields];
+        let data = [...schoolProfiles];
         data.splice(index, 1)
-        setFormFields(data)
+        setSchoolProfile(data)
+    }
+    const handleSave = () => {
+        setSchoolQualifications(schoolProfiles)
     }
 
     return (
-        <div className="flex flex-col px-2 w-full">
+        <div className="flex flex-col px-2 pb-1 w-full border-b">
             <div className="flex flex-row items-center justify-between">
                 <h2 className="pt-2 pb-4">School:</h2>
-                <button
-                    className="w-fit h-fit bg-light-grey text-royal-blue font-medium border rounded-md px-4 py-2"
-                    onClick={addFields}
-                >
-                    Add
-                </button>
-            </div>
+                <div className="flex flex-row gap-2">
+                    <button
+                        className="w-fit h-fit bg-light-blue text-white font-medium rounded-md px-4 py-2"
+                        onClick={handleSave}
+                    >
+                        Save
+                    </button>
+                    <button
+                        className="bg-light-grey text-royal-blue font-medium rounded-md py-1 px-4"
+                        type="button"
+                        onClick={() => addFields()}
+                    >
+                        Add
+                    </button>
+                </div>
+            </div> 
             <div className="flex flex-col" id="school-form">
                 <form className="flex flex-col items-center">
-                    {formFields.map((form, index) => {
+                    {schoolProfiles.map((schoolProfile, index) => {
                         return (
                             <div className="w-full flex flex-col items-center lg:flex lg:flex-row" key={index}>
+                                <button
+                                        className="bg-red-100 text-red-500 text-xl text-center rounded-md py-1 px-3 mt-1.5"
+                                        type="button"
+                                        onClick={() => removeFields(index)}
+                                    >
+                                        X
+                                </button>
                                 <div className="w-full px-3 pb-4">
                                     <TextInput
                                         label="school"
-                                        id="schoolName"
+                                        id="school"
                                         placeholder="Walthamstow Upper School"
-                                        value={schoolProfile.schoolName}
-                                        onChange={updateSchoolFields}
+                                        value={schoolProfile.school}
+                                        onChange={event => updateSchoolFields(index,event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -93,28 +102,28 @@ const SchoolForm = ({ schoolQualifications }) => {
                                         id="subject"
                                         type="text"
                                         placeholder="Maths"
-                                        value={schoolProfile.schoolSubject}
-                                        onChange={updateSchoolFields}
+                                        value={schoolProfile.subject}
+                                        onChange={event => updateSchoolFields(index,event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
                                     <TextInput
                                         label="qualification"
-                                        id="schoolExamType"
+                                        id="examType"
                                         type="text"
                                         placeholder="A Level"
-                                        value={schoolProfile.schoolExamType}
-                                        onChange={updateSchoolFields}
+                                        value={schoolProfile.examType}
+                                        onChange={event => updateSchoolFields(index,event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
                                     <TextInput
                                         label="grade"
-                                        id="schoolGrade"
+                                        id="grade"
                                         type="text"
                                         placeholder="A"
-                                        value={schoolProfile.schoolGrade}
-                                        onChange={updateSchoolFields}
+                                        value={schoolProfile.grade}
+                                        onChange={event => updateSchoolFields(index,event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -124,10 +133,10 @@ const SchoolForm = ({ schoolQualifications }) => {
                                     <input
                                         className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                                         name="degree-from"
-                                        id="schoolStart"
+                                        id="startDate"
                                         type="date"
-                                        value={schoolProfile.schoolStart}
-                                        onChange={updateSchoolFields}
+                                        value={schoolProfile.startDate}
+                                        onChange={event => updateSchoolFields(index,event)}
                                         required />
                                 </div>
                                 <div className="w-full px-3 pb-4">
@@ -137,20 +146,11 @@ const SchoolForm = ({ schoolQualifications }) => {
                                     <input
                                         className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                                         name="degree-to"
-                                        id="schoolEnd"
+                                        id="endDate"
                                         type="date"
-                                        value={schoolProfile.schoolEnd}
-                                        onChange={updateSchoolFields}
+                                        value={schoolProfile.endDate}
+                                        onChange={event => updateSchoolFields(index,event)}
                                         required />
-                                </div>
-                                <div className="flex flex-col">
-                                    <button
-                                        className="bg-red-100 text-red-500 py-1 px-2.5 rounded-md"
-                                        type="button"
-                                        onClick={() => removeFields(index)}
-                                    >
-                                        Remove
-                                    </button>
                                 </div>
                             </div>
                         )

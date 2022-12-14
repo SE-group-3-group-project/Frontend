@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import StorySummary from "./StorySummary";
 
-const Profile = ({ name, profilePicture, pEmail, dfEmail, github, linkedin, phone, story }) => {
+const Profile = ({ name, profilePicture, pEmail, dfEmail, github, linkedin, phone, nationality, personality, story }) => {
     return (
         <div className="bg-light-grey py-6 px-4 sm:px-12">
             <div className="px-12 py-6 my-y bg-off-white rounded-2xl">
@@ -27,6 +27,22 @@ const Profile = ({ name, profilePicture, pEmail, dfEmail, github, linkedin, phon
                                 </p>
                                 <p className="appearance-none block w-fit sm:w-3/5 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
                                     {name}
+                                </p>
+                            </div>
+                            <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                                <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                    Nationality
+                                </p>
+                                <p className="appearance-none block w-fit sm:w-3/5 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                    {nationality}
+                                </p>
+                            </div>
+                            <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
+                                <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="first-name">
+                                    Personality Type
+                                </p>
+                                <p className="appearance-none block w-fit sm:w-3/5 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white">
+                                    {personality}
                                 </p>
                             </div>
                             <div className="flex flex-col md:flex-row items-start sm:items-center justify-between pb-4">
