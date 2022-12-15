@@ -12,9 +12,6 @@ const Header = ({ profilePicture }) => {
                     <a href="/" className='text-sm sm:text-base'>
                         Need help? Talk to us
                     </a>
-                    <a href="/profile">
-                        <img src={home} alt="Digital Futures" />
-                    </a>
                     <a href="/" className='text-sm sm:text-base pr-4'>
                         Log out
                     </a>
