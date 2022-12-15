@@ -56,7 +56,13 @@ const Login = ({ setLoginUser }) => {
 
                     <h3 className="pt-2 pb-4 text-xl text-royal-blue text-center">LOG INTO YOUR ACCOUNT</h3>
                     <div className="flex flex-col" id="login-form ">
+
+
+
                         <form onSubmit={login} className="flex flex-col items-center">
+
+
+
                             <div className="w-full max-w-md w-64 m-3 text-xl">
                                 <label className="block uppercase tracking-wide text-gray-700 text-l font-bold mb-2 " htmlFor="sign-in-password">EMAIL
                                 </label>
