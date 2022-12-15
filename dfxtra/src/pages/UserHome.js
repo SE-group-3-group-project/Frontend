@@ -13,7 +13,7 @@ const UserHome = ({ data }) => {
         const github = data.contactDetails.github;
         const linkedIn = data.contactDetails.linkedIn;
         const phone = data.contactDetails.phoneNumber;
-        const nationality = data.nationality;
+        const nationality = data.nationality.charAt(0).toUpperCase() + data.nationality.slice(1);
         const personality = data.personality;
         const stories = data.personalStories;
         return (

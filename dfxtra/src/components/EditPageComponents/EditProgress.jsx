@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
 const EditProgress = ({ progress, totalData }) => {
+    const navigate = useNavigate();
     const [error, setError] = useState("")
     const { name, pronoun, profilePicture, contactDetails, nationality, personality, personalStories } = totalData;
     const { workExperiences, degrees, schoolQualifications, certifications, personalAchievements, portfolio } = personalStories;
@@ -31,21 +32,23 @@ const EditProgress = ({ progress, totalData }) => {
             }
         }
         try {
-            await axios.put(
+            const res = await axios.put(
                 `${process.env.REACT_APP_LOCALHOST}63974c4181a2a1af5d8f2f35`,
                 submitData
             );
+            console.log(res.data.message)
+            if (res.data.message == "Profile updated!") {
+                navigate("/profile");
+            }
+            return
         } catch (error) {
             setError(error)
         }
 
-        if (!error) {
-            <Navigate to="/profile" />
-        }
     }
 
     return (
-        <div className="px-12 py-6 m-4 bg-white flex flex-col sm:flex-row justify-between rounded-2xl">
+        <div className="px-12 py-6 m-4 bg-white flex flex-col items-center justify-between md:grid md:grid-cols-3 rounded-2xl">
             <h1 className="pt-2 pb-4 text-xl text-royal-blue">Your profile</h1>
             <div className="flex flex-col mb-2 items-center justify-between">
                 <div className="relative pt-1">
@@ -62,12 +65,26 @@ const EditProgress = ({ progress, totalData }) => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-row items-center justify-center gap-4">
-                <button
-                    className="h-fit border rounded-full bg-white px-3 py-1 sm:py-3 sm:px-4 hover:bg-light-blue hover:text-white"
-                    onClick={handleSubmit}
-                >Submit Draft</button>
-                <button className="h-fit border rounded-full bg-royal-blue text-white px-3 py-1 sm:py-3 sm:px-4 hover:opacity-70">Reset Draft</button>
+            <div className='place-self-end self-center'>
+                {progress === 100 ?
+                    (<button
+                        className="h-fit w-fit border rounded-full bg-royal-blue text-white px-3 py-1 sm:py-3 sm:px-4 hover:bg-light-blue hover:opacity-70"
+                        onClick={handleSubmit}
+                    >Submit Draft</button>)
+                    :
+                    (
+                        <div className='flex flex-col items-end'>
+                            <button
+                                className="h-fit w-fit border rounded-full bg-light-grey text-dark-grey px-3 py-1 sm:py-3 sm:px-4"
+                                type="button"
+                                disabled
+                            >Submit Draft</button>
+                            <p className='pt-2'>Make sure you've saved everything before submitting</p>
+                        </div>
+                    )
+                }
+
+                {/* <button className="h-fit border rounded-full bg-royal-blue text-white px-3 py-1 sm:py-3 sm:px-4 hover:opacity-70">Reset Draft</button> */}
             </div>
         </div >
     );

@@ -26,7 +26,7 @@ const EditInfo = ({ progress, setProgress, firstName, lastName, pronouns, profil
 
     const handleSubmit = async (e) => {
         if (progress < 100) {
-            setProgress(progress + 50)
+            setProgress(progress + 40)
         }
         e.preventDefault();
 

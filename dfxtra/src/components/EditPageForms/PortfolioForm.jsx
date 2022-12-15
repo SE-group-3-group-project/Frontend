@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Input from "../../utils/Input.jsx"
 
-const Portfolio = ({ inputPortfolio, setPortfolio }) => {
+const Portfolio = ({ storyProgress, setStoryProgress, inputPortfolio, setPortfolio }) => {
     let portfolioTitle;
     let portfolioURL;
     let portfolioYear;
@@ -46,6 +46,7 @@ const Portfolio = ({ inputPortfolio, setPortfolio }) => {
 
     const handleSave = () => {
         setPortfolio(portfolioProfiles)
+        setStoryProgress(storyProgress + 10)
     }
 
     return (

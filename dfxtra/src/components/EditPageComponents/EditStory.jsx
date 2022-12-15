@@ -7,12 +7,13 @@ import SchoolForm from "../EditPageForms/SchoolForm";
 import WorkForm from "../EditPageForms/WorkForm";
 
 const EditStory = ({ progress, setProgress, stories, setCurrentStories }) => {
-    const [workExperiences, setWork] = useState({})
-    const [degrees, setDegree] = useState({})
-    const [schoolQualifications, setSchoolQualifications] = useState({})
+    const [workExperiences, setWork] = useState({});
+    const [degrees, setDegree] = useState({});
+    const [schoolQualifications, setSchoolQualifications] = useState({});
     const [certifications, setCertifications] = useState({});
     const [personalAchievements, setAchievements] = useState({});
-    const [portfolio, setPortfolio] = useState({})
+    const [portfolio, setPortfolio] = useState({});
+    const [storyProgress, setStoryProgress] = useState(0);
 
     const inputWork = stories.workExperiences;
     const inputDegrees = stories.degrees;
@@ -23,13 +24,13 @@ const EditStory = ({ progress, setProgress, stories, setCurrentStories }) => {
 
     const handleSave = () => {
         if (progress < 100) {
-            setProgress(progress + 50)
+            setProgress(storyProgress)
         }
         const data = { workExperiences, degrees, schoolQualifications, certifications, personalAchievements, portfolio };
         setCurrentStories(data)
     }
 
-
+    console.log(storyProgress)
 
     return (
         <>
@@ -39,26 +40,38 @@ const EditStory = ({ progress, setProgress, stories, setCurrentStories }) => {
                     <WorkForm
                         inputWork={inputWork}
                         setWork={setWork}
+                        storyProgress={storyProgress}
+                        setStoryProgress={setStoryProgress}
                     />
                     <DegreeForm
                         inputDegrees={inputDegrees}
                         setDegree={setDegree}
+                        storyProgress={storyProgress}
+                        setStoryProgress={setStoryProgress}
                     />
                     <SchoolForm
                         inputSchoolQualifications={inputSchoolQualifications}
                         setSchoolQualifications={setSchoolQualifications}
+                        storyProgress={storyProgress}
+                        setStoryProgress={setStoryProgress}
                     />
                     <Certifications
                         inputCertifications={inputCertifications}
                         setCertification={setCertifications}
+                        storyProgress={storyProgress}
+                        setStoryProgress={setStoryProgress}
                     />
                     <PersonalAchievementsForm
                         inputAchievements={inputAchievements}
                         setAchievements={setAchievements}
+                        storyProgress={storyProgress}
+                        setStoryProgress={setStoryProgress}
                     />
                     <Portfolio
                         inputPortfolio={inputPortfolio}
                         setPortfolio={setPortfolio}
+                        storyProgress={storyProgress}
+                        setStoryProgress={setStoryProgress}
                     />
                 </div>
                 <button

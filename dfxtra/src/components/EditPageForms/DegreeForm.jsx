@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TextInput from "../../utils/Input.jsx"
 
-const DegreeForm = ({ inputDegrees, setDegree }) => {
+const DegreeForm = ({ storyProgress, setStoryProgress, inputDegrees, setDegree }) => {
     let universityName;
     let universitySubject;
     let universityDegreeLevel;
@@ -54,6 +54,7 @@ const DegreeForm = ({ inputDegrees, setDegree }) => {
 
     const handleSave = () => {
         setDegree(degreesProfiles)
+        setStoryProgress(storyProgress + 10)
     }
 
     return (

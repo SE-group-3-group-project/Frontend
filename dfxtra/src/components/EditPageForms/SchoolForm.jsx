@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TextInput from "../../utils/Input.jsx"
 
-const SchoolForm = ({ inputSchoolQualifications, setSchoolQualifications }) => {
+const SchoolForm = ({ storyProgress, setStoryProgress, inputSchoolQualifications, setSchoolQualifications }) => {
     let schoolName;
     let schoolExamType;
     let schoolSubject;
@@ -53,6 +53,7 @@ const SchoolForm = ({ inputSchoolQualifications, setSchoolQualifications }) => {
     }
     const handleSave = () => {
         setSchoolQualifications(schoolProfiles)
+        setStoryProgress(storyProgress + 10)
     }
 
     return (

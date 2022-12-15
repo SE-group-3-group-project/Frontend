@@ -2,7 +2,7 @@ import { useState } from "react";
 // import Input from "../../Utils/Input"
 import Input from "../../utils/Input";
 
-const Certifications = ({ inputCertifications, setCertification }) => {
+const Certifications = ({ storyProgress, setStoryProgress, inputCertifications, setCertification }) => {
 
     let certificationsType;
     let certificationsIssuer;
@@ -48,6 +48,7 @@ const Certifications = ({ inputCertifications, setCertification }) => {
 
     const handleSave = () => {
         setCertification(certificationsProfiles)
+        setStoryProgress(storyProgress + 10)
     }
 
     return (

@@ -52,33 +52,32 @@ const Login = ({ setLoginUser }) => {
             <HomeHeader />
             {loggedIn && <Navigate to="/" state={{ from: location }} />}
             <div className="px-12 py-6 m-4 bg-white rounded-2xl grid h-screen place-items-center">
-                <div className="border p-5 rounded ">
-
-                    <h3 className="pt-2 pb-4 text-xl text-royal-blue text-center">LOG INTO YOUR ACCOUNT</h3>
+                <div className="border p-5 rounded">
+                    <h3 className="py-5 px-4 text-xl md:text-2xl font-medium text-royal-blue text-center">LOG INTO YOUR ACCOUNT</h3>
                     <div className="flex flex-col" id="login-form ">
                         <form onSubmit={login} className="flex flex-col items-center">
-                            <div className="w-full max-w-md w-64 m-3 text-xl">
-                                <label className="block uppercase tracking-wide text-gray-700 text-l font-bold mb-2 " htmlFor="sign-in-password">EMAIL
+                            <div className="w-full max-w-md w-64 m-3 text md:text-lg">
+                                <label className="block uppercase tracking-wide text-gray-600 font-bold mb-2 " htmlFor="sign-in-password">EMAIL
                                 </label>
                                 <input type="personalEmail" id="sign-in-personalEmail" name="personalEmail" value={user.personalEmail} onChange={handleChange} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" />
                             </div>
 
-                            <div className="w-full max-w-md w-64 m-3 text-xl">
-                                <label className="block uppercase tracking-wide text-gray-700 text-l font-bold mb-2" htmlFor="sign-in-password">PASSWORD
+                            <div className="w-full max-w-md w-64 m-3 text md:text-lg pb-6">
+                                <label className="block uppercase tracking-wide text-gray-600 font-bold mb-2" htmlFor="sign-in-password">PASSWORD
                                 </label>
                                 <input type="password" id="sign-in-password" name="password" value={user.password} onChange={handleChange} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" />
                             </div>
                             <button
-                                className="border rounded-2xl bg-royal-blue text-xl text-white px-4 py-1 sm:py-3 sm:px-5 hover:opacity-70"
+                                className="border rounded-md bg-royal-blue text-xl text-white px-4 py-1 sm:py-2 sm:px-5 hover:opacity-70"
                                 type="button"
                                 onClick={login}
                             >
                                 Login
                             </button>
                         </form>
-                        <Link to="/register" className="text-center pt-5">
+                        {/* <Link to="/register" className="text-center pt-5">
                             You don&#x27;t have an account? Register now!
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             </div >

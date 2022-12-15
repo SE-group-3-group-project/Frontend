@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Input from "../../utils/Input"
 
-function WorkForm({ inputWork, setWork }) {
+function WorkForm({ storyProgress, setStoryProgress, inputWork, setWork }) {
     let workType;
     let workEmployer;
     let workPosition;
@@ -50,6 +50,7 @@ function WorkForm({ inputWork, setWork }) {
 
     const handleSave = () => {
         setWork(workProfiles)
+        setStoryProgress(storyProgress + 10)
     }
 
 

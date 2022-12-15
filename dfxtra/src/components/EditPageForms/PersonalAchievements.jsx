@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TextInput from "../../utils/Input.jsx"
 
-const PersonalAchievementsForm = ({ inputAchievements, setAchievements }) => {
+const PersonalAchievementsForm = ({ storyProgress, setStoryProgress, inputAchievements, setAchievements }) => {
 
     let achievementTitle;
     let achievementDescription;
@@ -41,6 +41,7 @@ const PersonalAchievementsForm = ({ inputAchievements, setAchievements }) => {
     }
     const handleSave = () => {
         setAchievements(achievementsProfiles)
+        setStoryProgress(storyProgress + 10)
     }
 
     return (
