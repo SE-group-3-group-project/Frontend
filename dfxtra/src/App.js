@@ -11,9 +11,10 @@ function App() {
 	const [profile, setProfile] = useState([]);
 	const [editProfile, setEditProfile] = useState({});
 	const [error, setError] = useState("");
+	const [gradId, setGradId] = useState("")
 
 	const getProfileHandler = () => {
-		getProfile(setProfile, setError);
+		getProfile(setProfile, setError, gradId);
 	};
 
 	useEffect(() => {
@@ -23,6 +24,7 @@ function App() {
 	if (error) {
 		setError({ error });
 	}
+	console.log(gradId)
 
 	return (
 		<>
@@ -30,12 +32,12 @@ function App() {
 				<Routes>
 					<Route
 						path="/"
-						element={<Login setLoginUser={setLoginUser} />}
+						element={<Login setLoginUser={setLoginUser} setGradId={setGradId} />}
 					/>
 					<Route path="/profile" element={<UserHome data={profile} user={user} />} />
 					<Route
 						path="/edit"
-						element={<Edit profile={profile} setEditProfile={setEditProfile} user={user} />}
+						element={<Edit profile={profile} setEditProfile={setEditProfile} user={user} getProfileHandler={getProfileHandler} />}
 					/>
 				</Routes>
 			</Router>

@@ -24,7 +24,7 @@ const EditStory = ({ progress, setProgress, stories, setCurrentStories }) => {
 
     const handleSave = () => {
         if (progress < 100) {
-            setProgress(storyProgress)
+            setProgress(progress + storyProgress)
         }
         const data = { workExperiences, degrees, schoolQualifications, certifications, personalAchievements, portfolio };
         setCurrentStories(data)

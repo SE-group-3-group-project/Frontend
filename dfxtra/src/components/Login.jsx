@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Link, Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import HomeHeader from './HomeHeader';
 import Footer from './Footer';
 
-const Login = ({ setLoginUser }) => {
+const Login = ({ setLoginUser, setGradId }) => {
 
     const [user, setUser] = useState({
         personalEmail: "",
@@ -32,27 +32,27 @@ const Login = ({ setLoginUser }) => {
             setLoggedIn(res.data.user ? true : false);
             setUser({ personalEmail: ``, password: `` });
             setLoginUser(res.data.user);
-            console.log(res);
+            setGradId(res.data.grad._id)
         } catch (error) {
             console.log(error)
         }
     }
 
-    const logout = async (e) => {
-        e.preventDefault();
-        const res = await axios.post(`http://localhost:4000/login`, user);
-        setLoginUser(res.data.user ? false : true);
-        setLoggedIn({ LoggedIn: false })
-        console.log("You are logged out")
-        alert('You have been logged out of the system');
-    }
+    // const logout = async (e) => {
+    //     e.preventDefault();
+    //     const res = await axios.post(`http://localhost:4000/login`, user);
+    //     setLoginUser(res.data.user ? false : true);
+    //     setLoggedIn({ LoggedIn: false })
+    //     console.log("You are logged out")
+    //     alert('You have been logged out of the system');
+    // }
 
     return (
         <>
             <HomeHeader />
-            {loggedIn && <Navigate to="/" state={{ from: location }} />}
-            <div className="px-12 py-6 m-4 bg-white rounded-2xl grid h-screen place-items-center">
-                <div className="border p-5 rounded">
+            {loggedIn && <Navigate to="/profile" state={{ from: location }} />}
+            <div className="px-12 py-6 m-4 rounded-2xl grid h-screen place-items-center bg-light-grey">
+                <div className="border p-5 rounded bg-white">
                     <h3 className="py-5 px-4 text-xl md:text-2xl font-medium text-royal-blue text-center">LOG INTO YOUR ACCOUNT</h3>
                     <div className="flex flex-col" id="login-form ">
                         <form onSubmit={login} className="flex flex-col items-center">

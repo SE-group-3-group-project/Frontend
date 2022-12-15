@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
-const EditProgress = ({ progress, totalData }) => {
+const EditProgress = ({ progress, totalData, getProfileHandler }) => {
     const navigate = useNavigate();
     const [error, setError] = useState("")
     const { name, pronoun, profilePicture, contactDetails, nationality, personality, personalStories } = totalData;
@@ -37,7 +37,8 @@ const EditProgress = ({ progress, totalData }) => {
                 submitData
             );
             console.log(res.data.message)
-            if (res.data.message == "Profile updated!") {
+            if (res.data.message === "Profile updated!") {
+                getProfileHandler();
                 navigate("/profile");
             }
             return
@@ -66,23 +67,10 @@ const EditProgress = ({ progress, totalData }) => {
                 </div>
             </div>
             <div className='place-self-end self-center'>
-                {progress === 100 ?
-                    (<button
-                        className="h-fit w-fit border rounded-full bg-royal-blue text-white px-3 py-1 sm:py-3 sm:px-4 hover:bg-light-blue hover:opacity-70"
-                        onClick={handleSubmit}
-                    >Submit Draft</button>)
-                    :
-                    (
-                        <div className='flex flex-col items-end'>
-                            <button
-                                className="h-fit w-fit border rounded-full bg-light-grey text-dark-grey px-3 py-1 sm:py-3 sm:px-4"
-                                type="button"
-                                disabled
-                            >Submit Draft</button>
-                            <p className='pt-2'>Make sure you've saved everything before submitting</p>
-                        </div>
-                    )
-                }
+                <button
+                    className="h-fit w-fit border rounded-full bg-royal-blue text-white px-3 py-1 sm:py-3 sm:px-4 hover:bg-light-blue hover:opacity-70"
+                    onClick={handleSubmit}
+                >Submit Draft</button>
 
                 {/* <button className="h-fit border rounded-full bg-royal-blue text-white px-3 py-1 sm:py-3 sm:px-4 hover:opacity-70">Reset Draft</button> */}
             </div>
