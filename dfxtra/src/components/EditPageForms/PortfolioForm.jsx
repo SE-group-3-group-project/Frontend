@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Input from "../../utils/Input.jsx"
+import Input from "../../Utils/Input.jsx"
 
 const Portfolio = ({ storyProgress, setStoryProgress, inputPortfolio, setPortfolio }) => {
     let portfolioTitle;

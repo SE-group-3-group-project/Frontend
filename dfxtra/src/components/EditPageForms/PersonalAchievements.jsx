@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TextInput from "../../utils/Input.jsx"
+import TextInput from "../../Utils/Input.jsx"
 
 const PersonalAchievementsForm = ({ storyProgress, setStoryProgress, inputAchievements, setAchievements }) => {
 
