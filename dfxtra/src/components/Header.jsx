@@ -1,5 +1,4 @@
 import logo from './images/logo.svg';
-import home from './images/home.svg';
 
 const Header = ({ profilePicture }) => {
     return (
