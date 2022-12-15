@@ -1,8 +1,12 @@
 import Profile from "../components/Profile";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { useNavigate } from 'react-router-dom';
 
 const UserHome = ({ data }) => {
+
+    const navigate = useNavigate();
+
     if (Object.keys(data).length > 0) {
         const key = data._id.toString();
         const { first, last } = data.name;
@@ -35,6 +39,8 @@ const UserHome = ({ data }) => {
                 <Footer />
             </>
         );
+    } else {
+        navigate("/");
     }
 };
 

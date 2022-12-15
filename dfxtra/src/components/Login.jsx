@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Link, Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import HomeHeader from './HomeHeader';
 import Footer from './Footer';
 
-const Login = ({ setLoginUser }) => {
+const Login = ({ setLoginUser, loggedIn, setLoggedIn }) => {
 
     const [user, setUser] = useState({
         personalEmail: "",
         password: ""
     });
 
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loginError, setLoginError] = useState()
 
     const location = useLocation();
 
@@ -27,14 +27,12 @@ const Login = ({ setLoginUser }) => {
         e.preventDefault();
         try {
             const res = await axios.post(`http://localhost:4000/login`, user);
-            alert(res.data.message);
-            console.log(res);
-            setLoggedIn(res.data.user ? true : false);
+            setLoggedIn(true);
             setUser({ personalEmail: ``, password: `` });
             setLoginUser(res.data.user);
-            console.log(res);
+            console.log(res.data);
         } catch (error) {
-            console.log(error)
+            setLoginError(error.response.data.message);
         }
     }
 
@@ -50,7 +48,7 @@ const Login = ({ setLoginUser }) => {
     return (
         <>
             <HomeHeader />
-            {loggedIn && <Navigate to="/" state={{ from: location }} />}
+            {loggedIn === true && <Navigate to="/profile" state={{ from: location }} />}
             <div className="px-12 py-6 m-4 bg-white rounded-2xl grid h-screen place-items-center">
                 <div className="border p-5 rounded">
                     <h3 className="py-5 px-4 text-xl md:text-2xl font-medium text-royal-blue text-center">LOG INTO YOUR ACCOUNT</h3>
@@ -66,6 +64,9 @@ const Login = ({ setLoginUser }) => {
                                 <label className="block uppercase tracking-wide text-gray-600 font-bold mb-2" htmlFor="sign-in-password">PASSWORD
                                 </label>
                                 <input type="password" id="sign-in-password" name="password" value={user.password} onChange={handleChange} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" />
+                            </div>
+                            <div className="pb-3 text-red-600">
+                                <p>{loginError}</p>
                             </div>
                             <button
                                 className="border rounded-md bg-royal-blue text-xl text-white px-4 py-1 sm:py-2 sm:px-5 hover:opacity-70"

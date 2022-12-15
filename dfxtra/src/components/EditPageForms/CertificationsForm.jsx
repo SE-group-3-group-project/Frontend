@@ -1,6 +1,6 @@
 import { useState } from "react";
 // import Input from "../../Utils/Input"
-import Input from "../../utils/Input";
+import Input from "../../Utils/Input";
 
 const Certifications = ({ storyProgress, setStoryProgress, inputCertifications, setCertification }) => {
 
