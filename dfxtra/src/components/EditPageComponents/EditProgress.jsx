@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
-const EditProgress = ({ progress, totalData }) => {
+const EditProgress = ({ progress, totalData, loginUser }) => {
     const navigate = useNavigate();
     const [error, setError] = useState("")
     const { name, pronoun, profilePicture, contactDetails, nationality, personality, personalStories } = totalData;
@@ -33,11 +33,11 @@ const EditProgress = ({ progress, totalData }) => {
         }
         try {
             const res = await axios.put(
-                `${process.env.REACT_APP_LOCALHOST}63974c4181a2a1af5d8f2f35`,
+                `${process.env.REACT_APP_LOCALHOST}${totalData.contactDetails.personalEmail}`,
                 submitData
             );
-            console.log(res.data.message)
-            if (res.data.message == "Profile updated!") {
+            console.log(res.data)
+            if (res.data === "Profile updated!") {
                 navigate("/profile");
             }
             return

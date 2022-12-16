@@ -25,7 +25,7 @@ const Header = ({ profilePicture, setLoggedIn, setLoginUser }) => {
                     <a href="/profile">
                         <img src={home} alt="Digital Futures" />
                     </a>
-                    <a href="#" className='text-sm sm:text-base pr-4' onClick={logout} >
+                    <a className='text-sm sm:text-base pr-4' onClick={logout} >
                         Log out
                     </a>
                     <img

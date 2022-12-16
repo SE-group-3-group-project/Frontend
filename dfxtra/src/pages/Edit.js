@@ -5,7 +5,7 @@ import EditProgress from "../components//EditPageComponents/EditProgress";
 import EditInfo from "../components//EditPageComponents/EditInfo";
 import EditStory from "../components/EditPageComponents/EditStory";
 
-const Edit = ({ profile, setEditProfile }) => {
+const Edit = ({ profile, setEditProfile, loginUser }) => {
 	const [progress, setProgress] = useState(0);
 	const [currentInfo, setCurrentInfo] = useState({});
 	const [currentStories, setCurrentStories] = useState({});
@@ -37,7 +37,7 @@ const Edit = ({ profile, setEditProfile }) => {
 		return (
 			<>
 				<Header profilePicture={profilePicture} />
-				<EditProgress progress={progress} totalData={totalData} />
+				<EditProgress progress={progress} totalData={totalData} loginUser={loginUser} />
 				<EditInfo
 					progress={progress}
 					setProgress={setProgress}
