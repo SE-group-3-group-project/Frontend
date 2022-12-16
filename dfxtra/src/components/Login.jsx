@@ -42,8 +42,8 @@ const Login = ({ setLoginUser, loggedIn, setLoggedIn }) => {
         return (
             <>
                 <HomeHeader />
-                <div className="px-12 py-6 m-4 bg-white rounded-2xl grid h-screen place-items-center">
-                    <div className="border p-5 rounded">
+                <div className="px-12 py-6 m-4 bg-gray-200 rounded-2xl grid h-screen place-items-center">
+                    <div className="p-5 rounded bg-white shadow-2xl">
                         <h3 className="py-5 px-4 text-xl md:text-2xl font-medium text-royal-blue text-center">LOG INTO YOUR ACCOUNT</h3>
                         <div className="flex flex-col" id="login-form ">
                             <form onSubmit={login} className="flex flex-col items-center">
@@ -69,9 +69,6 @@ const Login = ({ setLoginUser, loggedIn, setLoggedIn }) => {
                                     Login
                                 </button>
                             </form>
-                            {/* <Link to="/register" className="text-center pt-5">
-                            You don&#x27;t have an account? Register now!
-                        </Link> */}
                         </div>
                     </div>
                 </div >
