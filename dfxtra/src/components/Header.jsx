@@ -1,7 +1,17 @@
 import logo from './images/logo.svg';
 import home from './images/home.svg';
+import { useNavigate } from 'react-router-dom';
 
-const Header = ({ profilePicture }) => {
+const Header = ({ profilePicture, setLoggedIn, setLoginUser }) => {
+
+    const navigate = useNavigate();
+
+    const logout = () => {
+        setLoginUser({});
+        setLoggedIn(false)
+        navigate("/")
+    }
+
     return (
         <div className="text-white bg-black-blue">
             <nav className="flex flex-row items-center justify-between px-10 py-4">
@@ -15,7 +25,7 @@ const Header = ({ profilePicture }) => {
                     <a href="/profile">
                         <img src={home} alt="Digital Futures" />
                     </a>
-                    <a href="/" className='text-sm sm:text-base pr-4'>
+                    <a href="#" className='text-sm sm:text-base pr-4' onClick={logout} >
                         Log out
                     </a>
                     <img

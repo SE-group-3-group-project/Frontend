@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "tailwindcss/tailwind.css";
 import { getProfile } from "./AsyncFunctions/dfxtraAPICalls";
 import Edit from "./pages/Edit";
@@ -17,9 +17,11 @@ function App() {
 		getProfile(setProfile, setError, loginUser);
 	};
 
-	if (loggedIn) {
+	useEffect(() => {
 		getProfileHandler();
-	}
+	}, [])
+
+
 
 	if (error) {
 		setError({ error });
@@ -33,7 +35,7 @@ function App() {
 						path="/"
 						element={<Login setLoginUser={setLoginUser} setLoggedIn={setLoggedIn} loggedIn={loggedIn} />}
 					/>
-					<Route path="/profile" element={<UserHome data={profile} loginUser={loginUser} />} />
+					<Route path="/profile" element={<UserHome data={profile} setLoginUser={setLoginUser} setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
 					<Route
 						path="/edit"
 						element={<Edit profile={profile} setEditProfile={setEditProfile} loginUser={loginUser} />}

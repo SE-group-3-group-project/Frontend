@@ -2,10 +2,19 @@ import Profile from "../components/Profile";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
 
-const UserHome = ({ data }) => {
+const UserHome = ({ data, setLoggedIn, setLoginUser, loggedIn }) => {
 
     const navigate = useNavigate();
+
+
+    useEffect(() => {
+        if (loggedIn === false)
+            navigate("/")
+
+    }, [])
+
 
     if (Object.keys(data).length > 0) {
         const key = data._id.toString();
@@ -22,7 +31,7 @@ const UserHome = ({ data }) => {
         const stories = data.personalStories;
         return (
             <>
-                <Header profilePicture={profilePicture} />
+                <Header profilePicture={profilePicture} setLoggedIn={setLoggedIn} setLoginUser={setLoginUser} />
                 <Profile
                     key={key}
                     name={first + " " + last + " (" + pronouns + ")"}
@@ -39,8 +48,6 @@ const UserHome = ({ data }) => {
                 <Footer />
             </>
         );
-    } else {
-        navigate("/");
     }
 };
 
